@@ -1,0 +1,165 @@
+/* Current Fonts:
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', serif;
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Slab:wght@300&family=Roboto:wght@300&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: var(--font-1);
+  text-decoration: none;
+  color: black;
+}
+
+:root {
+  --font-1: "Poppins", sans-serif;
+  --font-2: "Roboto", sans-serif;
+  --font-3: "Roboto Slab", serif;
+}
+
+/* Navigation Bar styling starts here */
+.navbar {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  min-height: 8vh;
+  min-width: 100vw;
+  z-index: 1030;
+}
+
+.navigation-links {
+  display: flex;
+  margin-right: 22px;
+}
+
+.link-page {
+  position: relative;
+  margin: auto 12px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.brand {
+  margin: 10px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.scroll-bg {
+  background-color: #9f9f9f;
+}
+
+.brand span {
+  color: red;
+  font-size: 2.2rem;
+  font-weight: 900;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+/* Navigation Bar Styling Ends here */
+
+/* Hero Section Styling Starts Here */
+.hero-image {
+  background-image: url("../assets/3.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.hero-content-title {
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  left: 30%;
+  right: -32%;
+  z-index: 800;
+  color: black;
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+/* Hero Section Styling Ends Here */
+
+/*This container holds both navigation bar and hero section */
+.nav-hero-container {
+  position: relative; /* To make hero section's position absolute.*/
+  top: 0;
+  overflow: scroll; /* To prevent nav and hero from overlapping over the content section. */
+  min-height: 100vh;
+}
+
+/* CSS code for hover animation in the navbar */
+.link-page::before,
+.link-page::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: crimson;
+  left: 0;
+  transform: scaleX(0);
+  transition: all 0.3s;
+}
+
+.link-page::before {
+  top: 0;
+  transform-origin: left;
+}
+
+.link-page::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+.link-page:hover::before,
+.link-page:hover::after {
+  transform: scaleX(1);
+}
+
+.random-content {
+  margin-top: 32px;
+  margin: auto;
+  max-width: 60vw;
+}
+
+/* Footer Styling Starts Here */
+img {
+  width: 180px;
+}
+
+.footer {
+  max-width: 75%;
+  margin: 5rem auto;
+  overflow: auto;
+}
+
+.footer,
+.footer a {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin-bottom: 1.5rem;
+}
+
+.footer .footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.footer li {
+  line-height: 1.9;
+  list-style: none;
+}
+/* Footer Styling Ends Here */
