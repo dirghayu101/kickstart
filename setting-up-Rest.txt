@@ -1,0 +1,6 @@
+So here is how you will setup a REST API in node:
+
+1. Define a database schema, you can use either of postgres application or terminal for doing that.
+I will recommend terminal.
+
+2. 

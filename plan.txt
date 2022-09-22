@@ -1,0 +1,16 @@
+1. I will setup the basic functionality that is required by watching
+tutorials on YouTube.
+
+2. After completing a tutorial, I will make notes on different components
+used in that tutorial.
+
+3. After I am done setting up an initial application, I will refine it and
+modify it to fit my requirements.
+
+4. After that, I will go through John's code and pickup things/components 
+that I haven't use in my codebase and I will add those components.
+
+5. Read about the format of sending put, post, patch and other HTTP request in 
+the backend. That format is confusing, and compare that format in Node and in express.
+
+6. 
