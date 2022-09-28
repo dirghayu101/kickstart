@@ -1,20 +1,3 @@
-/* Current Fonts:
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto Slab', serif;
-*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Slab:wght@300&family=Roboto:wght@300&display=swap");
-
-* {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-  list-style: none;
-  font-family: var(--font-1);
-  text-decoration: none;
-  color: black;
-}
-
 :root {
   --font-1: "Poppins", sans-serif;
   --font-2: "Roboto", sans-serif;
@@ -30,6 +13,8 @@
   min-height: 8vh;
   min-width: 100vw;
   z-index: 1030;
+  border-bottom: 0.075px solid #fffffff3;
+  transition: .4s ease-in-out;
 }
 
 .navigation-links {
@@ -42,6 +27,7 @@
   margin: auto 12px;
   font-size: 1.2rem;
   text-align: center;
+  font-weight: 900;
 }
 
 .brand {
@@ -51,10 +37,11 @@
 }
 
 .scroll-bg {
-  background-color: #9f9f9f;
+  background-color: #eaeaea;
+  transition: .4s ease-in-out;
 }
 
-.brand span {
+.styleBrand{
   color: red;
   font-size: 2.2rem;
   font-weight: 900;
@@ -71,7 +58,6 @@
   height: 100vh;
   position: absolute;
   top: 0;
-  opacity: 0.6;
   z-index: 0;
 }
 
@@ -82,9 +68,13 @@
   left: 30%;
   right: -32%;
   z-index: 800;
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 4rem;
   font-weight: 900;
+}
+
+.hero-content-title .styleBrand{
+  font-size: 5rem;
 }
 
 /* Hero Section Styling Ends Here */

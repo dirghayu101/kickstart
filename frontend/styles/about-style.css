@@ -1,0 +1,44 @@
+:root {
+    --font-1: "Poppins", sans-serif;
+    --font-2: "Roboto", sans-serif;
+    --font-3: "Roboto Slab", serif;
+  }
+
+.about{
+    display: flex;
+    align-items: center;
+    margin: 0px;
+}
+
+.about-content{
+    min-width: 50vw;
+    padding: 70px;
+}
+
+.about-content h2{
+    padding-bottom: 25px; 
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+.about-content p{
+    font-size: 1rem;
+}
+
+.image-section img{
+    min-width: 50vw;
+}
+
+
+
+/*
+<div class="about">
+<div class="about-content">
+  <h2>About Us</h2>
+  <p>We offer affordable co-working workspace solutions that keep teams productive and safe. It helps companies, teams, and individuals engage in person, anywhere. Assisting entrepreneurs in business ventures and growth.Provide high quality workspaces for businesses of all sizes in effort of promoting healthy lifestyles and thus improving performance. Provide reasonably priced and fully serviced-workspace to the market and Educate society the benefit of co-working space and the idea of utilizing abundantly in shared economy.</p> 
+</div>
+<div class="image-section">
+ <img src="./assets/workPlaceImage.jpeg" alt="" srcset="">
+</div>
+</div>
+*/

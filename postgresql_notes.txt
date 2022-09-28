@@ -11,6 +11,7 @@ Or, if you don't want/need a background service you can just run:
 These are the notes from official documentation of postgresql
 
 TODO: Start postgresql: brew services start postgresql
+      Restart Postgresql: brew services restart postgresql@14
 Stop PostgreSQL: brew services stop postgresql
 
 TODO: Create database in PostgreSQL: createdb mydb
