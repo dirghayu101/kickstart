@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="./styles/common-style.css">
   <link rel="stylesheet" href="./styles/testimonial-style.css">
   <link rel="stylesheet" href="./styles/spaces-style.css">
+  <link rel="stylesheet" href="./styles/swiper-style.css">
+  <link rel="stylesheet" href="./styles/contact-and-FAQ.css">
 </head>
 
 <body>
@@ -68,7 +70,7 @@
 
     <div class="slider-pictures">
       <div class="slider-img-1 slider-image">
-          <p class="non-opaque">Hot seat</p>
+        <p class="non-opaque">Hot seat</p>
       </div>
       <div class="slider-img-2 slider-image">
         <p class="non-opaque">Private Office</p>
@@ -85,63 +87,203 @@
   <!--  Spaces for rentals end here. -->
 
   <!-- Testimonial section starts here -->
-  <!--
 
-<section class="container">
-  <div class="testimonial mySwiper">
-    <div class="testi-content swiper-wrapper">
-      <div class="slide swiper-slide">
-        <img src="#" alt="" class="image" />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-          saepe provident dolorem a quaerat quo error facere nihil deleniti
-          eligendi ipsum adipisci, fugit, architecto amet asperiores
-          doloremque deserunt eum nemo.
-        </p>
+  <section class="container">
+    <div class="testimonial swiper mySwiper">
+      <div class="testi-content swiper-wrapper">
+        <div class="slide swiper-slide">
+          <img src="images/image3.jpg" alt="" class="images">
+          <p>
+            A customer review is an evaluation of a product or service made by
+            someone who has purchased and used, or had experience with, a product or service.
+            Customer reviews are a form of customer feedback on electronic commerce
+            and online shopping sites.
+          </p>
 
-        <i class="bx bxs-quote-alt-left quote-icon"></i>
 
-        <div class="details">
-          <span class="name">Marnie Lotter</span>
-          <span class="job">Web Developer</span>
+          <i class="bx bxs-quote-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Client1</span>
+            <span class="job">Job description1</span>
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/image1.jpg" alt="" class="images">
+          <p>
+            A customer review is an evaluation of a product or service made by
+            someone who has purchased and used, or had experience with, a product or service.
+            Customer reviews are a form of customer feedback on electronic commerce
+            and online shopping sites.
+          </p>
+
+
+          <i class="bx bxs-quote-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Client2</span>
+            <span class="job">Job description1</span>
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/image2.png" alt="" class="images">
+          <p>
+            A customer review is an evaluation of a product or service made by
+            someone who has purchased and used, or had experience with, a product or service.
+            Customer reviews are a form of customer feedback on electronic commerce
+            and online shopping sites.
+          </p>
+
+
+          <i class="bx bxs-quote-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Client3</span>
+            <span class="job">Job description1</span>
+          </div>
         </div>
       </div>
-      <div class="slide swiper-slide">
-        <img src="#" alt="" class="image" />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-          saepe provident dolorem 
-        </p>
+      <div class="swiper-button-next nav-btn"></div>
+      <div class="swiper-button-prev nav-btn"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  <!-- Testimonial section ends here -->
 
-        <i class="bx bxs-quote-alt-left quote-icon"></i>
 
-        <div class="details">
-          <span class="name">Marnie Lotter</span>
-          <span class="job">Web Developer</span>
+  <!--CONTACT SECTION start here.-->
+  <section class="contact">
+    <div class="content">
+      <h2>Get In Touch</h2>
+    </div>
+    <div class="container">
+      <div class="contactInfo">
+        <div class="box">
+          <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="text">
+            <h3>Address</h3>
+            <p>#1 & 9, 4th Floor Eshwara Temple Road, <br>
+              Off Kanakpura Road, Doddakallasandra <br>
+              Bengaluru - 62.</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="text">
+            <h3>Phone</h3>
+            <p>9535672727</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon"><i class="fas fa-envelope"></i></div>
+          <div class="text">
+            <h3>Email</h3>
+            <p>info@kickstartworkhubs.com</p>
+          </div>
         </div>
       </div>
-      <div class="slide swiper-slide">
-        <img src="#" alt="" class="image" />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-          saepe provident dolorem a quaerat 
-        </p>
-
-        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-        <div class="details">
-          <span class="name">Marnie Lotter</span>
-          <span class="job">Web Developer</span>
-        </div>
+      <div class="contactForm">
+        <h2>Send us a message</h2>
+        <h3>We would love to hear from you!</h3>
+        <form action="#">
+          <div class="inputBox">
+            <input type="text" required>
+            <span>Name</span>
+          </div>
+          <div class="inputBox">
+            <input type="text" required>
+            <span>Email</span>
+          </div>
+          <div class="inputBox">
+            <input type="text" required>
+            <span>Phone number</span>
+          </div>
+          <div class="inputBox">
+            <textarea required></textarea>
+            <span>Enter your message</span>
+          </div>
+          <div class="inputBox">
+            <input type="submit" value="Send">
+          </div>
+        </form>
       </div>
     </div>
-    <div class="swiper-button-next nav-btn"></div>
-    <div class="swiper-button-prev nav-btn"></div>
-    <div class="swiper-pagination"></div>
-  </div>
-</section>
--->
-  <!-- Testimonial section ends here -->
+  </section>
+  <!-- Contact section end here. -->
+
+
+
+  <!--FAQs SECTION Start here.-->
+
+  <section class="faqs">
+    <div class="accordion-body">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <hr>
+        <div class="faqs-container">
+          <div class="label">What is a co-working space?</div>
+          <div class="content">
+            <p>
+              Coworking is a global movement that provides collaborative and innovative office space solutions for
+              people to grow their businesses. It is generally defined as flexible, membership-based workspaces where
+              diverse groups of freelancers, remote workers, and other independent professionals work together in a
+              shared, communal setting.
+              <br />
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="faqs-container">
+          <div class="label">Where are you located?</div>
+          <div class="content">
+            <p>
+              We are located in Bengaluru. <br>
+              Address: #1 & 9, 4th Floor Eshwara Temple Road,
+              Off Kanakpura Road, Doddakallasandra
+              Bengaluru - 62.
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="faqs-container">
+          <div class="label">What are the amenities?</div>
+          <div class="content">
+            <br>
+            Following amenities are offered by Kick Start Work Hubs :
+            <ul type="disc">
+              <li>High speed Internet</li>
+              <li>Power back up</li>
+              <li>A/C</li>
+              <li>Comfortable seating</li>
+              <li>Broad cubicle</li>
+              <li>Conference room</li>
+              <li>Coffee/Tea </li>
+              </ol>
+          </div>
+        </div>
+        <hr>
+        <div class="faqs-container">
+          <div class="label">Is parking included?</div>
+          <div class="content">
+            <p>
+              Yes, we have ample parking space.
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="faqs-container">
+          <div class="label">Can I receive letters?</div>
+          <div class="content">
+            <p>
+              Yes, you can get mail in our mailbox system if you have booked a seat with us.
+            </p>
+          </div>
+        </div>
+        <hr>
+      </div>
+  </section>
+  <!-- FAQ section end here -->
+
   <!-- Footer section starts here -->
   <footer>
     <footer class="footer">
@@ -166,24 +308,11 @@
     </footer>
   </footer>
   <!-- Footer section ends here -->
+
   <script src="./js/script.js"></script>
-
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      grabCursor: true,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-
-  </script>
+ <script src="./js/swipe-code.js"></script>
+  <script src="./js/testimonial-js.js"></script>
+  <script src="./js/contact-and-FAQ.js"></script> 
 </body>
 
 </html>

@@ -22,6 +22,7 @@ To display all the users in the database in the psql interface: \du
 
 To drop a table in psql: drop table <tableName>;
 
+\password command is used to alter passwords.
 
 
 

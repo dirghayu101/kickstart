@@ -1,0 +1,16 @@
+1. There are two ways of sending data from the frontend, the first one to send data as JSON,
+and this method is very common when we are developing a software in javascript.
+The second method is using URLENCODED format, which is what we prefer when we use PHP.
+
+2. If we use JS, we will mostly use URLENCODED.
+
+
+3. Always encrypt the passwords before storing them into the database. There are many algorithms 
+for hashing password. Some of them are bcrypt, md5, sha1, sha256, sha512, etc.
+
+4. Some characteristics of a good hashing algorithm:
+    -> Algorithm should be slow. This will help against a hacker who would try to brute force it.
+    -> The collision which means same key generating for two different characters or character array
+    should be minimal or improbable.
+
+5. 
