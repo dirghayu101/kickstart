@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const bcrypt =  require('bcryptjs')
 const client = require('./connection');
+const { existsSync } = require('fs');
+const jwt = require('jsonwebtoken');
 
 app.use(express.static('./frontend'))
 app.use(bodyParser.json())
@@ -56,6 +58,45 @@ app.post('/api/signup', async (req, res) =>{
     }
     res.json({status: 'ok'});
 });
+
+/* 
+
+	
+SELECT "eMail", password FROM public."User" WHERE "eMail" = 'dirghayujoshi48@gmail.com';
+*/
+
+app.post('/api/login', async(req, res) => {
+    
+    const {email, password} = req.body;
+    console.log("Here");
+    try {
+        const getQuery = `SELECT "eMail", password FROM public."User" WHERE "eMail"='${email}'`;
+        const result = await client.query(getQuery);
+        const {rows} = result;
+        if(rows.length === 0){
+            throw error;
+        }
+        if(bcrypt.compare(password, rows[0].password)){
+            res.json({status: 'ok', data: 'Coming soon...'})
+        }
+        
+    } catch (error) {
+        res.json({status: 'error', data: "Invalid username/password"});
+    }
+    
+
+});
+
+
+
+/*
+ client.query(`Select * from users where id=${req.params.id}`, (err, result)=>{
+        if(!err){
+            res.send(result.rows);
+        }
+    });
+    client.end;
+*/
 
 app.listen(3000, () => {
     

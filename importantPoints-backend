@@ -13,4 +13,6 @@ for hashing password. Some of them are bcrypt, md5, sha1, sha256, sha512, etc.
     -> The collision which means same key generating for two different characters or character array
     should be minimal or improbable.
 
-5. 
+5. You client has to authenticate to the server who it is. There are two ways of doing this:
+    a> Client somehow prove itself through a non-changeable secret data. (JSON Web Token)
+    b> Client and Server shares a secret. (Cookie)
