@@ -9,8 +9,11 @@ const jwt = require('jsonwebtoken');
 
 app.use(express.static('./frontend'))
 app.use(bodyParser.json())
+app.set('view engine', 'ejs');
 
-
+app.get('/ejs-demo', (req, res) => {
+    res.render(__dirname, './frontend/views/index.ejs');
+});
 
 app.get('/', (req, res) => {
     console.log(__dirname);
@@ -20,6 +23,10 @@ app.get('/', (req, res) => {
 app.get('/signup', (req, res) => {
     res.sendFile(path.resolve(__dirname, './frontend/sign-up.html'));
 
+});
+
+app.get('/template', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './frontend/template.html'));
 });
 
 app.get('/login', (req, res) =>{

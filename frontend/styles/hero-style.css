@@ -1,9 +1,3 @@
-:root {
-  --font-1: "Poppins", sans-serif;
-  --font-2: "Roboto", sans-serif;
-  --font-3: "Roboto Slab", serif;
-}
-
 /* Navigation Bar styling starts here */
 .navbar {
   position: fixed;
@@ -36,6 +30,7 @@
   text-align: center;
 }
 
+/* This class is for navbar animation */
 .scroll-bg {
   background-color: #eaeaea;
   transition: .4s ease-in-out;
@@ -114,42 +109,3 @@
 .link-page:hover::after {
   transform: scaleX(1);
 }
-
-.random-content {
-  margin-top: 32px;
-  margin: auto;
-  max-width: 60vw;
-}
-
-/* Footer Styling Starts Here */
-img {
-  width: 180px;
-}
-
-.footer {
-  max-width: 75%;
-  margin: 5rem auto;
-  overflow: auto;
-}
-
-.footer,
-.footer a {
-  color: #999;
-  font-size: 0.9rem;
-}
-
-.footer p {
-  margin-bottom: 1.5rem;
-}
-
-.footer .footer-cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
-}
-
-.footer li {
-  line-height: 1.9;
-  list-style: none;
-}
-/* Footer Styling Ends Here */

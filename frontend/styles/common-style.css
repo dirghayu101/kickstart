@@ -16,4 +16,8 @@
   overflow-x: hidden;
 }
 
-
+:root {
+  --font-1: "Poppins", sans-serif;
+  --font-2: "Roboto", sans-serif;
+  --font-3: "Roboto Slab", serif;
+}

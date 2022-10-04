@@ -71,9 +71,12 @@
   background-image: url("../assets/space-slider/4.jpeg");
 }
 
+.slider-pictures a{
+  display: block;
+  width: 400px;
+}
+
 .slider-pictures p{
-  /* display: table-cell;
-  vertical-align: middle; */
   text-align: center;
   text-transform: uppercase;
   font-size: 2.4rem;
