@@ -1,0 +1,132 @@
+.outer-div{
+    display:grid;
+    grid-template-columns: 50vw 50vw;
+    height: 100vh;
+}
+
+.first-inner-div{
+    background-image: url('../assets/template-pictures/1.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.second-inner-div{
+    display: flex;
+    flex-direction: column;
+    padding: 6vh 5vw;
+}
+
+.second-inner-div-content{
+    overflow: hidden;
+}
+
+.second-inner-div-content .link, .second-inner-div-content .link a{
+    padding-bottom: 10px;
+    margin-top: 10vh;
+    color: rgb(131, 131, 131);
+}
+
+.second-inner-div-content .link a:hover,
+.second-inner-div-content .link:hover{
+    color:rgb(65, 205, 158);
+    transition: 0.3s ease;
+
+}
+
+
+.second-inner-div-content .link::before
+{
+    content:"<";
+}
+
+
+.second-inner-div-content h2{
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+
+.second-inner-div-para{
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: -12px;
+    padding-bottom: 30px;
+}
+
+.second-inner-div-para-2{
+    width: 26vw;
+    padding: 0 0 20px 0;
+    font-size: 0.9rem;
+}
+
+.second-inner-div-icons{
+    margin: 20px 0;
+    width: 35vw;
+    margin-left: -12px
+}
+
+.icon-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.icon-item{
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.icon{
+    width: 70px;
+    padding: 15px;
+}
+button{
+    all:unset;
+}
+
+.btn{
+    width: 180px;
+    height: 60px;
+    margin-top: 30px;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    color:rgb(131, 131, 131);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #9b9b9b09 ;
+    border: 1px solid black;
+    transition: 0.4s ease;
+
+}
+
+
+.btn:hover{
+    font-size: 1.13rem;
+    background-color: rgb(65, 205, 158);
+    color: white;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+/* Code for sticky navbar */
+.content{
+    margin-top: 8.9vh;
+}
+
+.sticky{
+  position: fixed;
+  top: 0;
+}
+

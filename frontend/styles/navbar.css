@@ -1,0 +1,93 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 9vh;
+    min-width: 100vw;
+    z-index: 1030;
+    background-color: #eaeaea;
+    font-family: var(--font-1);
+  }
+
+.brand {
+    margin: 10px;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+.navigation-links{
+    display: flex;
+
+}
+
+.navigation-links {
+    display: flex;
+    margin-right: 22px;
+  }
+
+.link-page {
+    position: relative;
+    margin: auto 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 900;
+  }
+
+
+.styleBrand{
+    color: red;
+    font-size: 2.2rem;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-weight: 900;
+  }
+
+
+/* These styles are for giving the animation effect. */
+.link-page::before,
+.link-page::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: crimson;
+  left: 0;
+  transform: scaleX(0);
+  transition: all 0.5s;
+}
+
+.link-page::before {
+  top: 0;
+  transform-origin: left;
+}
+
+.link-page::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+.link-page:hover::before,
+.link-page:hover::after {
+  transform: scaleX(1);
+}
+
+.random-content {
+  margin-top: 32px;
+  margin: auto;
+  max-width: 60vw;
+}
+
+
+/*<div class="navbar">
+        <div class="brand">
+          <a href="#"><span class="styleBrand">K</span>ick<span class="styleBrand">S</span>tart</a>
+        </div>
+        <ul class="navigation-links">
+          <li class="link-page"><a href="#">Home</a></li>
+          <li class="link-page"><a href="#">About</a></li>
+          <li class="link-page"><a href="#">Pricing</a></li>
+          <li class="link-page"><a href="">Book a visit</a></li>
+          <li class="link-page"><a href="/login">Contact</a></li>
+        </ul>
+      </div>*/
