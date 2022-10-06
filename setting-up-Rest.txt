@@ -1,3 +1,12 @@
+About REST API:
+
+1. Most important thing to note is Rest is not a specification.
+
+2. It is a loose set of rules that have become a common standard for making web application API.
+
+3. These include: Uniform interface, client server, stateless, cacheable, layered system and code on demand.
+
+
 So here is how you will setup a REST API in node:
 
 1. Define a database schema, you can use either of postgres application or terminal for doing that.

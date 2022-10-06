@@ -1,0 +1,33 @@
+
+
+[
+    {
+        "heading": "Private Office",
+        "tagLine": "From ₹10,000 a month.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime alias delectus nulla numquam hic.Ullam adipisci impedit veniam repellat minus velit, eos hic quas sit in ab tenetur ducimus numquam amet reiciendis ipsum minima eligendi et commodi excepturi quisquam iusto! Dolores autem officia magnam libero repellat eveniet dolorum fugiat earum ab.",
+        "bookNowLink": "/privateOffice",
+        "imageLink":"../assets/template-pictures/1.webp"
+        
+    },
+    {
+        "heading": "Hot Seat",
+        "tagLine": "From ₹10,000 a month.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime alias delectus nulla numquam hic.Ullam adipisci impedit veniam repellat minus velit, eos hic quas sit in ab tenetur ducimus numquam amet reiciendis ipsum minima eligendi et commodi excepturi quisquam iusto! Dolores autem officia magnam libero repellat eveniet dolorum fugiat earum ab.",
+        "bookNowLink": "/privateOffice",
+        "imageLink":"../assets/template-pictures/2.webp"
+    },
+    {
+        "heading": "Conference Room",
+        "tagLine": "From ₹10,000 a month.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime alias delectus nulla numquam hic.Ullam adipisci impedit veniam repellat minus velit, eos hic quas sit in ab tenetur ducimus numquam amet reiciendis ipsum minima eligendi et commodi excepturi quisquam iusto! Dolores autem officia magnam libero repellat eveniet dolorum fugiat earum ab.",
+        "bookNowLink": "/privateOffice",
+        "imageLink":"../assets/template-pictures/3.webp"
+    },
+    {
+        "heading": "Cubicle",
+        "tagLine": "From ₹10,000 a month.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime alias delectus nulla numquam hic.Ullam adipisci impedit veniam repellat minus velit, eos hic quas sit in ab tenetur ducimus numquam amet reiciendis ipsum minima eligendi et commodi excepturi quisquam iusto! Dolores autem officia magnam libero repellat eveniet dolorum fugiat earum ab.",
+        "bookNowLink": "/privateOffice",
+        "imageLink":"../assets/template-pictures/4.webp"
+    }
+]

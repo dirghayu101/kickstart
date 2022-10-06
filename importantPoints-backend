@@ -16,3 +16,10 @@ for hashing password. Some of them are bcrypt, md5, sha1, sha256, sha512, etc.
 5. You client has to authenticate to the server who it is. There are two ways of doing this:
     a> Client somehow prove itself through a non-changeable secret data. (JSON Web Token)
     b> Client and Server shares a secret. (Cookie)
+
+
+6. EJS path specification for CSS and JS files is quite weird. Look into it.
+
+7. The data that you will send from the backend to the frontend should be first converted to the JSON format then you will do the binding of it to the frontend.
+
+8. The project is not component based, so use display: none to hide something while performing CRUD operation.

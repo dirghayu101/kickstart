@@ -1,7 +1,12 @@
 /*
 
+NOTE: The server side code hasn't been modularized properly, go through the dependencies and code of John to modularize it after you are done making an initial prototype.
+
+NOTE: Some of the REST convention aren't followed in our code. There is a scope to implement pagination, offset and all those things described in this video (https://www.youtube.com/watch?v=-mN3VyJuCjM&ab_channel=ByteByteGo), once you are done with an initial prototype, make your code follow the REST norms.
+
+
 To do in the frontend:
--> Google Map API
+-> Google Map API (Implement it using ejs, if the api respond to the request, display the map otherwise do not.)
 -> https://www.wix.com/website-template/view/html/1908 --> This design for the pricing card.
 -> Remove coworking subscription.
 -> Slider functionality setup 

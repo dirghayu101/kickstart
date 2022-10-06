@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login page - KickStart</title>
+    <link rel="stylesheet" href="./styles/login-page.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Admin Login</h1>
+      <form method="post" id="login-form">
+        <div class="txt_field">
+          <input type="text" id="email" required>
+          <span></span>
+          <label>Email-ID</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" id="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        <input type="submit" value="Login">
+        <div class="signup_link">
+          Not a member? <a href="/Signup">Signup</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById("login-form");
+      form.addEventListener('submit', loginUser);
+      
+      async function loginUser(event){
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const result = await fetch('/api/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            password
+          })
+        }).then((res) => res.json())
+
+        if(result.status === 'ok'){
+          console.log('Got the token: ', result.data);
+          alert("Success!");
+        }
+        else{
+          alert(result.error);
+        }
+
+      }
+    
+    
+    
+    </script>
+  </body>
+</html>
