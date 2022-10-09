@@ -28,6 +28,7 @@ const form = document.getElementById('reg-form');
           gender
         })
       }).then((res) => res.json())
+      .then((data) => console.log(data))
     }
 
     function getGender(){

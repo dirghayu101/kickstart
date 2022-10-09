@@ -8,7 +8,6 @@ const ejs = require("ejs");
 const { existsSync } = require("fs");
 const jwt = require("jsonwebtoken");
 const data = require("./data/priceCardData.json");
-const adminData = require("./data/adminDataObjects");
 
 app.use(express.static("./frontend"));
 app.use(bodyParser.json());
@@ -49,13 +48,14 @@ app.get("/admin-login", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./frontend/admin-login.html"));
 });
 
-app.get("/admin:path", (req, res) => {
+app.get("/admin:path", async (req, res) => {
+  const adminData = require("./data/adminDataObjects");
   const requestKeyword = req.params.path;
   if (requestKeyword === "dashboard") {
     res.render("admin-panel", { data: adminData.dashboard });
   } else if (requestKeyword === "users") {
-    console.log(adminData.users.table);
-    res.render("admin-panel", { data: adminData.users });
+    var finalValue = await adminData.users.table
+    res.render("admin-panel-user", {data: adminData.users, tableValues: finalValue});
   } else if (requestKeyword === "orders") {
     res.render("admin-panel", { data: adminData.orders });
   } else if (requestKeyword === "messages") {
@@ -72,6 +72,7 @@ app.get("/admin:path", (req, res) => {
     }
   }
 });
+
 
 app.post("/api/signup", async (req, res) => {
   console.log(req.body);
@@ -109,7 +110,7 @@ app.post("/api/signup", async (req, res) => {
       throw error;
     }
   }
-  res.json({ status: "ok" });
+  res.json({ status: "ok", message: "Hello, the connection has been established." });
 });
 
 /* 
@@ -130,9 +131,11 @@ app.post("/api/login", async (req, res) => {
       throw error;
     }
     if (bcrypt.compare(password, rows[0].password)) {
+      console.log("Password verified, user exist.");
       res.json({ status: "ok", data: "Coming soon..." });
     }
   } catch (error) {
+    console.log("User doesn't exist.");
     res.json({ status: "error", data: "Invalid username/password" });
   }
 });
@@ -205,15 +208,17 @@ app.put("/admin/users/:id", async (req, res) => {
 // DELETE FROM public."User"
 	// WHERE <condition>;
 
-app.delete("/admin/users/:id", (req, res) => {
-    const queryName = req.params.id;
+app.delete("/admin/delete/users/:id", (req, res) => {
+    const phoneNumber = req.params.id;
  
-    let insertQuery = `DELETE FROM public."User" WHERE "fName"='${queryName}'`;
+    let deleteQuery = `DELETE FROM public."User" WHERE "phoneNumber"=${phoneNumber}`;
 
-  client.query(insertQuery, (err, result) => {
+  client.query(deleteQuery, (err, result) => {
     if (!err) {
-      res.send("Deletion was successful");
+      console.log("Deletion Success!");
+      res.json({status: 'ok', message: "Deletion was successful"});
     } else {
+      console.log("Deletion Failed");
       console.log(err.message);
     }
   });
@@ -222,7 +227,6 @@ app.delete("/admin/users/:id", (req, res) => {
 // API ends here.
 
 app.listen(3000, () => {
-  console.log(adminData.dashboard.classValue);
   console.log(path.resolve(__dirname, "./frontend/home.html"));
   console.log("server is listening on port 3000....");
 });

@@ -2,7 +2,7 @@ const client = require("../connection");
 
 const adminData = {
   dashboard: {
-    classValue: `class="active"`,
+    
     body: `<main>
     <h1>Dashboard</h1>
     <div class="date">
@@ -150,29 +150,9 @@ const adminData = {
     `,
   },
   users: {
-    body: `
-    <main>
-            <div class="recentReservations">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>fName</th>
-                            <th>lName</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    `,
-    table: getData(),
-    script: `<script>document.querySelector('.users').classList.add('active');
-    </script>
-    `,
+    body: ``,
+    table: requestData(),
+    script: `<script>document.querySelector('.users').classList.add('active')</script>`,
   },
   orders: {
     body: `<main></main>`,
@@ -200,12 +180,14 @@ const adminData = {
   },
 };
 
-async function getData() {
-  var selectQuery = `SELECT "fName", "lName", "phoneNumber", "eMail"
-        FROM public."User"`;
-  const { rows } = await client.query(selectQuery);
-  client.end;
-  return rows;
+async function requestData() {
+    var selectQuery = `SELECT "fName", "lName", "phoneNumber", "eMail" FROM public."User"`;
+
+   const {rows} = await client.query(selectQuery);
+   client.end;
+//    console.log(rows);
+   return rows;
 }
+
 
 module.exports = adminData;

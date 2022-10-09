@@ -31,4 +31,14 @@ springboard indicube, clayworks
 -> Reservation and Pricing -> Cart and all those components as the frontend.
 
 
+
+-> Reset password
+-> JWT for user authentication
+-> User frontend setup
+-> Sign up page: error handling proper for different things --> email format check, mobile number check etc.
+-> Sign up page backend setup like different error fixing --> letting user know that his email and password is already in use so he should sign-in.
+-> Email verification.
+-> Admin page setup for different CRUD operations.
+
+
 */

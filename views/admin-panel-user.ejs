@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/adminStyles/general.css">
+    <link rel="stylesheet" href="../styles/adminStyles/aside-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/main-section-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/right-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/media-queries.css">
+    <style>
+        .delete-row:hover {
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 500ms ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- The first column of the grid, aside section starts here. -->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <!-- <img src="./assets/kickstart-logo.png" alt="" srcset=""> -->
+                    <h2><span class="danger">K</span>ick<span class="danger">S</span>tart</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- This will have all the options in the admin dashboard. -->
+                <a href="/admindashboard" class="dashboard">
+                    <span class="material-icons-sharp">
+                        grid_view
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="/adminusers" class="users">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Users</h3>
+                </a>
+                <a href="/adminorders" class="orders">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="/adminmessages" class="messages">
+                    <span class="material-icons-sharp">
+                        mail_outline
+                    </span>
+                    <h3>Messages</h3>
+                    <!-- This span will be the notification on the message icon. -->
+                    <span class="message-count">12</span>
+                </a>
+                <a href="/adminproducts" class="products">
+                    <span class="material-icons-sharp">
+                        inventory
+                    </span>
+                    <h3>Products</h3>
+                </a>
+                <a href="/adminreports" class="reports">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <!-- For errors -->
+                    <h3>Reports</h3>
+                </a>
+                <a href="/adminsettings" class="settings">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="/adminaddProducts" class="addProducts">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>Add Products</h3>
+                </a>
+                <a href="/admin-login">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- Aside section ends here. -->
+
+        <!-- Main section starts here. -->
+        <main>
+            <div class="recent-reservations">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone Number</th>
+                            <th>Email ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% tableValues.forEach((element)=> {%>
+                            <tr class="user-row">
+                                <td>
+                                    <%=element.fName%>
+                                </td>
+                                <td>
+                                    <%=element.lName%>
+                                </td>
+                                <td class="phone-number">
+                                    <%=element.phoneNumber%>
+                                </td>
+                                <td>
+                                    <%=element.eMail%>
+                                </td>
+                                <td class="danger delete-row">Delete</td>
+                            </tr>
+                            <%});%>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <!-- Main Section ends here. -->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Suman</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/admin-panel.js"></script>
+    <%-data.script%>
+        <script>
+            var allDeleteButtons = document.querySelectorAll('.delete-row');
+            allDeleteButtons.forEach(deleteButton => deleteButton.addEventListener("click", function (){
+                var firstName = deleteButton.parentElement.querySelector('td').innerHTML.trim();
+                var confirm = prompt(`This action will delete the row with the first name ${firstName}. This action cannot be reverted. Type 'CONFIRM' to continue the action.`);
+                if(confirm==="CONFIRM"){
+                    deleteButton.parentElement.style.setProperty("display", "none");
+                    var phoneNumber = deleteButton.parentElement.querySelector('.phone-number').innerHTML.trim();
+                    deleteRequest(phoneNumber)
+                }
+                else{
+                    return;
+                }
+            }));
+            
+            async function deleteRequest(value){
+                const result = await fetch(`/admin/delete/users/${value}`, {
+                    method: 'DELETE',
+                    headers:{
+                      'Content-Type' : 'application/json'
+                    },
+                })
+                //TODO: An alert or something after this is successful that the data has been deleted from the database.
+            }
+        
+        </script>
+</body>
+
+</html>
