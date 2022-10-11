@@ -146,13 +146,14 @@ const adminData = {
     </div>
 </main> `,
     script: `<script>document.querySelector('.dashboard').classList.add('active')</script>
-    <script src="../js/user.js"></script>
     `,
   },
   users: {
     body: ``,
     table: requestData(),
-    script: `<script>document.querySelector('.users').classList.add('active')</script>`,
+    script: `<script>document.querySelector('.users').classList.add('active')</script>
+    <script src="../js/admin/admin-panel-user-dashboard.js"></script>
+    `,
   },
   orders: {
     body: `<main></main>`,

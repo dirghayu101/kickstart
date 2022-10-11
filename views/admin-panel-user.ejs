@@ -18,6 +18,49 @@
             font-weight: bold;
             transition: all 500ms ease;
         }
+        
+        /*.edit-button{
+            display: none;
+        } */
+        .edit-button, .save-button, .add-button{
+            font-size: 1.5rem;
+            transition: all 500ms ease;
+        }
+        
+        .add-button:hover{
+            cursor: pointer;
+            transition: all 500ms ease;
+            color: green;
+        }
+
+        .edit-button:hover{
+            cursor: pointer;
+            transition: all 500ms ease;
+            color: rgba(0, 221, 255, 0.475);
+
+        }
+        .save-button:hover{
+            cursor: pointer;
+            transition: all 500ms ease;
+            color: rgb(10, 191, 10);
+        }
+        main{
+            padding-top: 5vh;
+        }
+        .user-row{
+            z-index: 1;
+        }
+        .user-row td{
+            z-index: -1;
+        }
+        .second-table{
+            margin-top: 8vh;
+        }
+        .second-table td input{
+            border: 0.5px dotted black;
+            height: 2rem;
+            padding: 8px;
+        }
     </style>
 </head>
 
@@ -101,6 +144,7 @@
 
         <!-- Main section starts here. -->
         <main>
+            <h2>All Users in the System:</h2>
             <div class="recent-reservations">
                 <table>
                     <thead>
@@ -111,8 +155,10 @@
                             <th>Email ID</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="first-table">
                         <% tableValues.forEach((element)=> {%>
+                        
+                           
                             <tr class="user-row">
                                 <td>
                                     <%=element.fName%>
@@ -127,10 +173,47 @@
                                     <%=element.eMail%>
                                 </td>
                                 <td class="danger delete-row">Delete</td>
+                                <td><span class="edit-button material-icons-sharp">
+                                        edit
+                                    </span>
+                                    <span class="save-button material-icons-sharp">
+                                        save
+                                    </span>
+                                </td>
+                            </div>
                             </tr>
+                    
+
                             <%});%>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="second-table">
+                <h2>Add a new user:</h2>
+                <div class="recent-reservations">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone Number</th>
+                                <th>Email ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><span class="add-button material-icons-sharp">
+                                    add_circle
+                                </span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
         <!-- Main Section ends here. -->
@@ -159,34 +242,8 @@
         </div>
 
     </div>
-    <script src="../js/admin-panel.js"></script>
+    <script src="../js/admin/admin-panel.js"></script>
     <%-data.script%>
-        <script>
-            var allDeleteButtons = document.querySelectorAll('.delete-row');
-            allDeleteButtons.forEach(deleteButton => deleteButton.addEventListener("click", function (){
-                var firstName = deleteButton.parentElement.querySelector('td').innerHTML.trim();
-                var confirm = prompt(`This action will delete the row with the first name ${firstName}. This action cannot be reverted. Type 'CONFIRM' to continue the action.`);
-                if(confirm==="CONFIRM"){
-                    deleteButton.parentElement.style.setProperty("display", "none");
-                    var phoneNumber = deleteButton.parentElement.querySelector('.phone-number').innerHTML.trim();
-                    deleteRequest(phoneNumber)
-                }
-                else{
-                    return;
-                }
-            }));
-            
-            async function deleteRequest(value){
-                const result = await fetch(`/admin/delete/users/${value}`, {
-                    method: 'DELETE',
-                    headers:{
-                      'Content-Type' : 'application/json'
-                    },
-                })
-                //TODO: An alert or something after this is successful that the data has been deleted from the database.
-            }
-        
-        </script>
 </body>
 
 </html>

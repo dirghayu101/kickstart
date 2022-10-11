@@ -56,6 +56,8 @@ app.get("/admin:path", async (req, res) => {
   } else if (requestKeyword === "users") {
     var finalValue = await adminData.users.table
     res.render("admin-panel-user", {data: adminData.users, tableValues: finalValue});
+    //TODO: I have to give the select query here, otherwise it won't refresh the table.
+
   } else if (requestKeyword === "orders") {
     res.render("admin-panel", { data: adminData.orders });
   } else if (requestKeyword === "messages") {
@@ -171,7 +173,7 @@ app.post("/admin/users", async (req, res) => {
   } = req.body;
   insertQuery = `INSERT INTO public."User"(
         "fName", "lName", "phoneNumber", password, "eMail", gender)
-        VALUES ('${firstName}', '${lastName}', ${phoneNumber}, '${password}', '${emailID}', 'Male' )`;
+        VALUES ('${firstName}', '${lastName}', ${phoneNumber}, '${password}', '${emailID}', '${gender}' )`;
 
         await client.query(insertQuery, (err, result) => {
             if (!err) {
@@ -191,9 +193,11 @@ UPDATE public."User"
 */
 
 app.put("/admin/users/:id", async (req, res) => {
-  const queryName = req.params.id;
+  const phoneNumber = req.params.id;
   let user = req.body;
-  let updateQuery = `UPDATE public."User" SET "fName"='${user.firstName}', "lName"='${user.lastName}' WHERE "fName"='${queryName}'`;
+  let updateQuery = `UPDATE public."User"
+	SET "fName"='${user.fName}', "lName"='${user.lName}', "eMail"='${user.mailID}'
+	WHERE "phoneNumber"=${user.phoneNumber};`;
 
   await client.query(updateQuery, (err, result) => {
     if (!err) {
