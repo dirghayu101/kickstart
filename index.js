@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const adminRoutes = require("./routes/admin")
-const userRoutes = require("./routes/user")
-const data = require("./data/priceCardData.json")
+
 const bodyParser = require("body-parser");
 const client = require("./database/connection");
-const path = require("path");
 
+const adminRoutes = require("./routes/admin")
+const userRoutes = require("./routes/user")
+const priceRoutes = require("./routes/price")
 
 app.use("/", express.static("./frontend"));
 app.set("view engine", "ejs");
@@ -17,19 +17,7 @@ app.use(bodyParser.json());
 
 //NOTE A security issue is that I can access any file in the directory using the /path, so I have to fix this.
 
-app.get("/price/:fileName", (req, res) => {
-  const requestKeyword = req.params.fileName;
-  if (requestKeyword === "PrivateOffice") {
-    res.render("template", { data: data[0] });
-  } else if (requestKeyword === "HotSeat") {
-    res.render("template", { data: data[1] });
-  } else if (requestKeyword === "ConferenceRoom") {
-    res.render("template", { data: data[2] });
-  } else {
-    res.render("template", { data: data[3] });
-  }
-});
-
+app.use("/price", priceRoutes)
 app.use("/admin", adminRoutes)
 app.use("/user", userRoutes)
 
