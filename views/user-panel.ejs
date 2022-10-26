@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/adminStyles/general.css">
+    <link rel="stylesheet" href="../styles/adminStyles/aside-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/main-section-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/right-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/media-queries.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- The first column of the grid, aside section starts here. -->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <!-- <img src="./assets/kickstart-logo.png" alt="" srcset=""> -->
+                    <h2><span class="danger">K</span>ick<span class="danger">S</span>tart</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- This will have all the options in the admin dashboard. -->
+                <a href="/user/dashboard" class="dashboard">
+                    <span class="material-icons-sharp">
+                        grid_view
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="/user/spaces" class="users">
+                    <span class="material-icons-sharp">
+                        workspaces
+                    </span>
+                    <h3>Spaces</h3>
+                </a>
+                <a href="/adminorders" class="orders">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="/adminreports" class="reports">
+                    <span class="material-icons-sharp">
+                        auto_awesome
+                    </span>
+                    <h3>Feedback</h3>
+                </a>
+                <a href="/adminmessages" class="messages">
+                    <span class="material-icons-sharp">
+                        handshake
+                    </span>
+                    <h3>Support</h3>
+                </a>
+                <a href="/adminsettings" class="settings">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Re-schedule</h3>
+                </a>
+                <a href="/admin-login">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- Aside section ends here. -->
+
+        <!-- Main section starts here. -->
+        <%-data.body%>
+        <!-- Main Section ends here. -->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey,  <b>Suman</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/admin/admin-panel.js"></script>
+    <%-data.script%>
+</body>
+
+</html>

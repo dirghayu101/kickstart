@@ -18,45 +18,53 @@
             font-weight: bold;
             transition: all 500ms ease;
         }
-        
+
         /*.edit-button{
             display: none;
         } */
-        .edit-button, .save-button, .add-button{
+        .edit-button,
+        .save-button,
+        .add-button {
             font-size: 1.5rem;
             transition: all 500ms ease;
         }
-        
-        .add-button:hover{
+
+        .add-button:hover {
             cursor: pointer;
             transition: all 500ms ease;
             color: green;
         }
 
-        .edit-button:hover{
+        .edit-button:hover {
             cursor: pointer;
             transition: all 500ms ease;
             color: rgba(0, 221, 255, 0.475);
 
         }
-        .save-button:hover{
+
+        .save-button:hover {
             cursor: pointer;
             transition: all 500ms ease;
             color: rgb(10, 191, 10);
         }
-        main{
+
+        main {
             padding-top: 5vh;
         }
-        .user-row{
+
+        .user-row {
             z-index: 1;
         }
-        .user-row td{
+
+        .user-row td {
             z-index: -1;
         }
-        .second-table{
+
+        .second-table {
             margin-top: 8vh;
         }
-        .second-table td input{
+
+        .second-table td input {
             border: 0.5px dotted black;
             height: 2rem;
             padding: 8px;
@@ -81,58 +89,57 @@
 
             <div class="sidebar">
                 <!-- This will have all the options in the admin dashboard. -->
-                <a href="/admindashboard" class="dashboard">
+                <a onclick="getPage('dashboard')" class="dashboard">
                     <span class="material-icons-sharp">
                         grid_view
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/adminusers" class="users">
+                <a onclick="getPage('users')" class="users">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
                     <h3>Users</h3>
                 </a>
-                <a href="/adminorders" class="orders">
+                <a onclick="getPage('orders')" class="orders">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href="/adminmessages" class="messages">
+                <a onclick="getPage('messages')" class="messages">
                     <span class="material-icons-sharp">
                         mail_outline
                     </span>
                     <h3>Messages</h3>
-                    <!-- This span will be the notification on the message icon. -->
                     <span class="message-count">12</span>
                 </a>
-                <a href="/adminproducts" class="products">
+                <a onclick="getPage('products')" class="products">
                     <span class="material-icons-sharp">
                         inventory
                     </span>
                     <h3>Products</h3>
                 </a>
-                <a href="/adminreports" class="reports">
+                <a onclick="getPage('reports')" class="reports">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                     <!-- For errors -->
                     <h3>Reports</h3>
                 </a>
-                <a href="/adminsettings" class="settings">
+                <a onclick="getPage('settings')" class="settings">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
                 </a>
-                <a href="/adminaddProducts" class="addProducts">
+                <a onclick="getPage('addProducts')" class="addProducts">
                     <span class="material-icons-sharp">
                         add
                     </span>
                     <h3>Add Products</h3>
                 </a>
-                <a href="/admin-login">
+                <a href="/admin/login">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -157,8 +164,8 @@
                     </thead>
                     <tbody class="first-table">
                         <% tableValues.forEach((element)=> {%>
-                        
-                           
+
+
                             <tr class="user-row">
                                 <td>
                                     <%=element.fName%>
@@ -180,69 +187,249 @@
                                         save
                                     </span>
                                 </td>
-                            </div>
-                            </tr>
-                    
+            </div>
+            </tr>
 
-                            <%});%>
-                    </tbody>
+            <%});%>
+                </tbody>
                 </table>
-            </div>
+    </div>
 
-            <div class="second-table">
-                <h2>Add a new user:</h2>
-                <div class="recent-reservations">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Email ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><span class="add-button material-icons-sharp">
-                                    add_circle
-                                </span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-        <!-- Main Section ends here. -->
+    <div class="second-table">
+        <h2>Add a new user:</h2>
+        <div class="recent-reservations">
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Email ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><span class="add-button material-icons-sharp">
+                                add_circle
+                            </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </main>
+    <!-- Main Section ends here. -->
 
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">
-                        menu
-                    </span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">
+                    menu
+                </span>
+            </button>
+            <div class="theme-toggler" onclick="changeTheme()">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p>Hey, <b>Suman</b></p>
+                    <small class="text-muted">Admin</small>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey, <b>Suman</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
-                    </div>
+                <div class="profile-photo">
+                    <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
-    <script src="../js/admin/admin-panel.js"></script>
+
+    <script>
+        
+        changeTheme = () => {
+            document.body.classList.toggle('dark-theme-variables');
+            let temp = document.querySelector('.theme-toggler')
+            temp.querySelector('span:nth-child(1)').classList.toggle('active')
+            temp.querySelector('span:nth-child(2)').classList.toggle('active')
+        }
+
+        // Code for delete functionality starts here.
+        var allDeleteButtons = document.querySelectorAll(".delete-row");
+        allDeleteButtons.forEach((deleteButton) =>
+            deleteButton.addEventListener("click", function () {
+                var firstName = deleteButton.parentElement
+                    .querySelector("td")
+                    .innerHTML.trim();
+                var confirm = prompt(
+                    `This action will delete the row with the first name ${firstName}. This action cannot be reverted. Type 'CONFIRM' to continue the action.`
+                );
+                if (confirm === "CONFIRM") {
+                    deleteButton.parentElement.style.setProperty("display", "none");
+                    var phoneNumber = deleteButton.parentElement
+                        .querySelector(".phone-number")
+                        .innerHTML.trim();
+                    deleteRequest(phoneNumber);
+                } else {
+                    return;
+                }
+            })
+        );
+
+        async function deleteRequest(value) {
+            const result = await fetch(`/admin/users/delete/${value}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            //TODO: An alert or something after this is successful that the data has been deleted from the database.
+        }
+        // Code for delete ends here.
+
+        // Code for update starts here
+
+        // This function will set the table as editable.
+        var editButtons = document.querySelectorAll(".edit-button");
+        editButtons.forEach((button) =>
+            button.addEventListener("click", function () {
+                var getCells = button.parentElement.parentElement.querySelectorAll("td");
+                var length = getCells.length;
+                for (var i = 0; i <= 3; i++) {
+                    if (i == 2) {
+                        continue;
+                    }
+                    getCells[i].contentEditable = "true";
+                }
+            })
+        );
+
+        var saveButtons = document.querySelectorAll(".save-button");
+        saveButtons.forEach((button) =>
+            button.addEventListener("click", function () {
+                var checkEditable =
+                    button.parentElement.parentElement.querySelector("td").contentEditable;
+                if (checkEditable === "false" || checkEditable === "inherit") {
+                    return;
+                }
+                var fName = button.parentElement.parentElement
+                    .querySelector("td")
+                    .innerHTML.trim();
+                var confirm = prompt(
+                    `The action will override all the values with the current first name ${fName}. Type 'CONFIRM' to continue the action.`
+                );
+                if (confirm !== "CONFIRM") {
+                    return;
+                }
+                var row = button.parentElement.parentElement;
+                updateRow(row);
+            })
+        );
+
+        async function updateRow(row) {
+            var cells = row.querySelectorAll("td");
+            var fName = cells[0].innerHTML.trim();
+            var lName = cells[1].innerHTML.trim();
+            var phoneNumber = cells[2].innerHTML.trim();
+            var mailID = cells[3].innerHTML.trim();
+            removeEditable()
+            const result = await fetch(`/admin/users/update/${phoneNumber}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fName,
+                    lName,
+                    phoneNumber,
+                    mailID,
+                }),
+            })  
+        }
+
+        function removeEditable(){
+            editButtons.forEach((button) => {
+                var getCells = button.parentElement.parentElement.querySelectorAll("td");
+                var length = getCells.length;
+                for (var i = 0; i <= 3; i++) {
+                    if (i == 2) {
+                        continue;
+                    }
+                    getCells[i].contentEditable = "false";
+                }
+            })
+        }
+
+        //TODO: Update functionality is working fine on the database side. But there are following things to do to make it more useful:
+        // 1. The result isn't showing up of both deletion, insertion or update function, server needs to be restarted for that. This needs to be fixed.
+        // 2. The user isn't receiving any message that tells him that the insertion or whatever is successful, user should receive a message, or some error occurred in case error arise. And we need to be specific about the error. Maybe a type mistake or something.
+        // 3. Then you have to remove the editable property saving the data entered or retrieving the original data incase the operation failed.
+
+        // Code for insert user functionality starts here.
+        var insertButton = document.querySelector(".add-button");
+        insertButton.addEventListener("click", function () {
+            var row = insertButton.parentElement.parentElement;
+            updateTable(row);           //Will update view in the client side.
+            insertTable(row);
+
+        });
+
+        async function insertTable(row) {
+            var inputValues = row.querySelectorAll("input");
+            let firstName = inputValues[0].value;
+            let lastName = inputValues[1].value;
+            let phoneNumber = inputValues[2].value;
+            let emailID = inputValues[3].value;
+            let password = "12345678";
+            let gender = "Other";
+            inputValues.forEach(input => input.value = '');
+            const result = await fetch(`/admin/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                    emailID,
+                    password,
+                    gender
+                })
+            })
+        }
+
+        function updateTable(row) {
+            var inputValues = row.querySelectorAll("input");
+            let fName = inputValues[0].value;
+            let lName = inputValues[1].value;
+            let phoneNumber = inputValues[2].value;
+            let email = inputValues[3].value;
+            const tr = document.createElement("tr");
+            tr.classList.add("user-row");
+            const trContent = `
+        <td>${fName}</td>
+        <td>${lName}</td>
+        <td>${phoneNumber}</td>  
+        <td>${email}</td>
+        <td class="danger">Delete</td>
+        <td>
+            <span class="edit-button material-icons-sharp">edit</span>
+            <span class="save-button material-icons-sharp">save</span>
+        </td>
+    `;
+            tr.innerHTML = trContent;
+            document.querySelector(".first-table").appendChild(tr);
+        }
+
+// TODO: The update functionality is working fine, but there are some works to do:
+// 1. You need to create a single API for handling all the insertion. There are multiple points for handling insertion in my server.
+// 2. API is not rest compliant. Work on making it REST compliant.
+    </script>
     <%-data.script%>
 </body>
 

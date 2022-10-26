@@ -1,5 +1,3 @@
-const client = require("../connection");
-
 const adminData = {
   dashboard: {
     
@@ -150,9 +148,8 @@ const adminData = {
   },
   users: {
     body: ``,
-    table: requestData(),
     script: `<script>document.querySelector('.users').classList.add('active')</script>
-    <script src="../js/admin/admin-panel-user-dashboard.js"></script>
+    
     `,
   },
   orders: {
@@ -181,14 +178,6 @@ const adminData = {
   },
 };
 
-async function requestData() {
-    var selectQuery = `SELECT "fName", "lName", "phoneNumber", "eMail" FROM public."User"`;
-
-   const {rows} = await client.query(selectQuery);
-   client.end;
-//    console.log(rows);
-   return rows;
-}
 
 
 module.exports = adminData;

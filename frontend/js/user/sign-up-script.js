@@ -14,7 +14,7 @@ const form = document.getElementById('reg-form');
       const emailID = document.getElementById("emailID").value;
       const password = document.getElementById("sPassword").value;
 
-      const result = await fetch('/api/signup', {
+      const result = await fetch('/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json'

@@ -1,3 +1,4 @@
+//!NOTE: This file isn't linked anymore.
 // Code for delete functionality starts here.
 var allDeleteButtons = document.querySelectorAll(".delete-row");
 allDeleteButtons.forEach((deleteButton) =>

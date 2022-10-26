@@ -31,25 +31,25 @@
 
             <div class="sidebar">
                 <!-- This will have all the options in the admin dashboard. -->
-                <a href="/admindashboard" class="dashboard">
+                <a onclick="getPage('dashboard')" class="dashboard">
                     <span class="material-icons-sharp">
                         grid_view
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/adminusers" class="users">
+                <a onclick="getPage('users')" class="users">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
                     <h3>Users</h3>
                 </a>
-                <a href="/adminorders" class="orders">
+                <a onclick="getPage('orders')" class="orders">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href="/adminmessages" class="messages">
+                <a onclick="getPage('messages')" class="messages">
                     <span class="material-icons-sharp">
                         mail_outline
                     </span>
@@ -57,32 +57,32 @@
                     <!-- This span will be the notification on the message icon. -->
                     <span class="message-count">12</span>
                 </a>
-                <a href="/adminproducts" class="products">
+                <a onclick="getPage('products')" class="products">
                     <span class="material-icons-sharp">
                         inventory
                     </span>
                     <h3>Products</h3>
                 </a>
-                <a href="/adminreports" class="reports">
+                <a onclick="getPage('reports')" class="reports">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                     <!-- For errors -->
                     <h3>Reports</h3>
                 </a>
-                <a href="/adminsettings" class="settings">
+                <a onclick="getPage('settings')" class="settings">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
                 </a>
-                <a href="/adminaddProducts" class="addProducts">
+                <a onclick="getPage('addProducts')" class="addProducts">
                     <span class="material-icons-sharp">
                         add
                     </span>
                     <h3>Add Products</h3>
                 </a>
-                <a href="/admin-login">
+                <a href="/admin/login">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -94,33 +94,71 @@
 
         <!-- Main section starts here. -->
         <%-data.body%>
-        <!-- Main Section ends here. -->
+            <!-- Main Section ends here. -->
 
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">
-                        menu
-                    </span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey,  <b>Suman</b></p>
-                        <small class="text-muted">Admin</small>
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">
+                            menu
+                        </span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
                     </div>
-                    <div class="profile-photo">
-                        <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>Suman</b></p>
+                            <small class="text-muted">Admin</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
     </div>
-    <script src="../js/admin/admin-panel.js"></script>
+    <script>
+
+       sideMenu = document.querySelector("aside");
+       menuBtn = document.querySelector("#menu-btn");
+       closeBtn = document.querySelector("#close-btn");
+       themeToggler = document.querySelector('.theme-toggler');
+
+        // Show sidebar
+        menuBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'block';
+        })
+
+        // Close sidebar
+        closeBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'none';
+        })
+
+        // Change theme
+        themeToggler.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme-variables');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+        })
+
+        getPage = async (params) => {
+            let page = await fetch(`/admin/${params}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `${localStorage.getItem('token')}`
+                }}).then((res) => res.text())
+            document.querySelector('html').innerHTML = page;
+            let scriptTags = document.querySelectorAll('script')
+            scriptTags.forEach((tag) =>{
+            let scriptTag = document.createElement('script')
+            scriptTag.innerHTML = tag.innerHTML
+            document.body.appendChild(scriptTag)
+            })
+        }
+    </script>
     <%-data.script%>
 </body>
 

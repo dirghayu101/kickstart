@@ -54,21 +54,21 @@
 }
 
 .slider-pictures .slider-img-1{
-  background-image: url("../assets/space-slider/1.jpeg");
+  background-image: url("/assets/space-slider/1.jpeg");
 
 }
 
 .slider-pictures .slider-img-2{
-  background-image: url("../assets/space-slider/2.jpeg");  
+  background-image: url("/assets/space-slider/2.jpeg");  
 }
 
 .slider-pictures .slider-img-3{
-  background-image: url("../assets/space-slider/3.jpeg");
+  background-image: url("/assets/space-slider/3.jpeg");
 
 }
 
 .slider-pictures .slider-img-4{
-  background-image: url("../assets/space-slider/4.jpeg");
+  background-image: url("/assets/space-slider/4.jpeg");
 }
 
 .slider-pictures a{
