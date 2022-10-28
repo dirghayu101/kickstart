@@ -67,6 +67,14 @@ const getUserByMail = async (mailID) => {
     client.end;
     return rows
 }
+
+const getUserInformation = async (mailID) => {
+  const getQuery = `SELECT "fName", "lName", "phoneNumber", "eMail", password FROM public."User" WHERE "eMail"='${mailID}'`;
+  const {rows} = await client.query(getQuery);
+  client.end;
+  console.log(rows)
+  return rows
+}
   
 const getAdmin = async (email) => {
     const getQuery = `SELECT "email", password FROM public."Admin" WHERE "email"='${email}'`
@@ -75,5 +83,5 @@ const getAdmin = async (email) => {
     return rows
 }
 
-const db = {getAdmin, getUserByMail, getAllUsers, insertUser, deleteUser, updateUser,}
+const db = {getAdmin, getUserByMail, getAllUsers, insertUser, deleteUser, updateUser, getUserInformation,}
 module.exports = db;

@@ -61,6 +61,8 @@ const adminDashboardPath = async (req, res) => {
       if (requestKeyword === "addProducts") {
         res.render("admin-panel", { data: adminData.addProducts });
       }
+    //TODO Else condition to return error.
+
     }
   }
 

@@ -4,9 +4,6 @@ const menuBtn = document.querySelector("#menu-btn");
 const closeBtn = document.querySelector("#close-btn");
 const themeToggler = document.querySelector('.theme-toggler');
 
-console.log("loaded");
-
-alert("JS loaded!")
 // Show sidebar
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';

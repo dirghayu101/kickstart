@@ -35,3 +35,29 @@ const start = async () => {
 };
 
 start();
+
+
+const populateDatabase = () => {
+  const dbPopulate = require("./controllers/populate")
+  let seatArr = []
+  dbPopulate.generateIDsForHotSeat(seatArr)
+  dbPopulate.insertInHotSeat(seatArr)
+  seatArr = []
+  dbPopulate.generateIDsForCubicle(seatArr)
+  dbPopulate.insertInCubicle(seatArr)
+  seatArr = []
+  dbPopulate.generateIDsForConferenceRoom(seatArr)
+  dbPopulate.insertInConferenceRoom(seatArr)
+  seatArr = []
+  dbPopulate.generateIDsForPrivateOffice(seatArr)
+  dbPopulate.insertInPrivateOffice(seatArr)
+}
+
+
+const deleteRowsInReservationTables = () => {
+  const dbPopulate = require("./controllers/populate")
+  dbPopulate.deleteRowsInAllTable()
+}
+
+deleteRowsInReservationTables()
+// const db = require("./controllers/populate")

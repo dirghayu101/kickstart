@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <!--  -->
+    <title>User Panel</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="../styles/adminStyles/general.css">
     <link rel="stylesheet" href="../styles/adminStyles/aside-style.css">
@@ -31,43 +32,43 @@
 
             <div class="sidebar">
                 <!-- This will have all the options in the admin dashboard. -->
-                <a href="/user/dashboard" class="dashboard">
+                <a onclick="getPage('dashboard')" class="dashboard">
                     <span class="material-icons-sharp">
                         grid_view
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/user/spaces" class="users">
+                <a onclick="getPage('spaces')" class="users spaces">
                     <span class="material-icons-sharp">
                         workspaces
                     </span>
                     <h3>Spaces</h3>
                 </a>
-                <a href="/adminorders" class="orders">
+                <a onclick="getPage('orders')" class="orders">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href="/adminreports" class="reports">
+                <a onclick="getPage('feedback')" class="reports feedback">
                     <span class="material-icons-sharp">
                         auto_awesome
                     </span>
                     <h3>Feedback</h3>
                 </a>
-                <a href="/adminmessages" class="messages">
+                <a onclick="getPage('support')" class="messages support">
                     <span class="material-icons-sharp">
                         handshake
                     </span>
                     <h3>Support</h3>
                 </a>
-                <a href="/adminsettings" class="settings">
+                <a onclick="getPage('reschedule')" class="settings reschedule">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Re-schedule</h3>
                 </a>
-                <a href="/admin-login">
+                <a href="/user/login">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -78,7 +79,7 @@
         <!-- Aside section ends here. -->
 
         <!-- Main section starts here. -->
-        <%-data.body%>
+        <main></main>
         <!-- Main Section ends here. -->
 
         <div class="right">
@@ -94,18 +95,56 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey,  <b>Suman</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p>Hey, <b>User</b></p>
+                        <small class="text-muted">User</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="../assets/admin-panel/founderPicture.jpeg" alt="" srcset="">
+                        <img src="/assets/user-panel/profilePicture.png" alt="" srcset="">
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <script src="../js/admin/admin-panel.js"></script>
+    <script>
+        sideMenu = document.querySelector("aside");
+        menuBtn = document.querySelector("#menu-btn");
+        closeBtn = document.querySelector("#close-btn");
+        themeToggler = document.querySelector('.theme-toggler');
+
+        // Show sidebar
+        menuBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'block';
+        })
+
+        // Close sidebar
+        closeBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'none';
+        })
+
+        // Change theme
+        themeToggler.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme-variables');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+        })
+
+        getPage = async (params) => {
+            let page = await fetch(`/user/${params}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `${localStorage.getItem('userToken')}`
+                }}).then((res) => res.text())
+
+            document.querySelector('html').innerHTML = page;
+            let scriptTags = document.querySelectorAll('script')
+            scriptTags.forEach((tag) =>{
+            let scriptTag = document.createElement('script')
+            scriptTag.innerHTML = tag.innerHTML
+            document.body.appendChild(scriptTag)
+            })
+        }
+    </script>
     <%-data.script%>
 </body>
 
