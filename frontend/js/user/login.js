@@ -33,10 +33,11 @@ async function loginUser(event) {
 
 async function getUserPage(result){
   localStorage.setItem('userToken', result.data);
+  localStorage.setItem('mail', document.getElementById("email").value)
   const userPanel = await fetch('/user/dashboard',{
     method: 'GET',
     headers: {
-      Authorization: `${localStorage.getItem('userToken')} ${document.getElementById("email").value}`
+      Authorization: `${localStorage.getItem('userToken')} ${localStorage.getItem('mail')}`
     },
   }).then((res) => res.text())
   document.querySelector('html').innerHTML = userPanel

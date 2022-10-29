@@ -42,11 +42,13 @@ const dashboardPath = async (req, res) => {
   let authBody = req.headers.authorization.split(' ')
   let token = authBody[0]
   let email = authBody[1]
+  console.log("Email ", email)
+  console.log("Token is: ", `"${token}"`)
   if (!jwt.verify(token, process.env.JWT_USER)) {
     return res.json({ status: "error", error: "Invalid username/password" });
   }
+  console.log("Verification crossed.")
   const userInformation = await db.getUserInformation(email)
-  console.log(userInformation)
   const requestKeyword = req.params.path;
   const userData = require("../data/userDataObject")
   if (requestKeyword === "dashboard") {

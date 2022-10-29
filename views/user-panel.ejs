@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--  -->
-    <title>User Panel</title>
+    <title><%-db.fName%>'s Panel</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="../styles/adminStyles/general.css">
     <link rel="stylesheet" href="../styles/adminStyles/aside-style.css">
     <link rel="stylesheet" href="../styles/adminStyles/main-section-style.css">
     <link rel="stylesheet" href="../styles/adminStyles/right-style.css">
     <link rel="stylesheet" href="../styles/adminStyles/media-queries.css">
+    <link rel="stylesheet" href="../styles/userStyles/price-catalogue.css">
+    <link rel="stylesheet" href="../styles/userStyles/price-page.css">
 </head>
 
 <body>
@@ -77,9 +79,16 @@
             </div>
         </aside>
         <!-- Aside section ends here. -->
-
+<div></div>
         <!-- Main section starts here. -->
-        <main></main>
+        <main>
+            <%-data.mainBody%>
+            <!-- <p>Back</p>
+            <h1>Meeting Room</h1> -->
+
+            
+
+        </main>
         <!-- Main Section ends here. -->
 
         <div class="right">
@@ -95,7 +104,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>User</b></p>
+                        <p>Hey, <b><%-db.fName%></b></p>
                         <small class="text-muted">User</small>
                     </div>
                     <div class="profile-photo">
@@ -133,7 +142,7 @@
             let page = await fetch(`/user/${params}`, {
                 method: 'GET',
                 headers: {
-                    Authorization: `${localStorage.getItem('userToken')}`
+                    Authorization: `${localStorage.getItem('userToken')} ${localStorage.getItem('mail')}`
                 }}).then((res) => res.text())
 
             document.querySelector('html').innerHTML = page;

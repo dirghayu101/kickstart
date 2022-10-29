@@ -13,8 +13,14 @@
 
 /* The first column of the website. */
 aside{
-    height: 100vh;
+    height: 100%;
     border-right: 0.5px solid red;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 14vw;
 }
 
 /* This is the logo section in the first column. */

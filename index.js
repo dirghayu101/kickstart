@@ -59,5 +59,3 @@ const deleteRowsInReservationTables = () => {
   dbPopulate.deleteRowsInAllTable()
 }
 
-deleteRowsInReservationTables()
-// const db = require("./controllers/populate")

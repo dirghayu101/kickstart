@@ -72,7 +72,6 @@ const getUserInformation = async (mailID) => {
   const getQuery = `SELECT "fName", "lName", "phoneNumber", "eMail", password FROM public."User" WHERE "eMail"='${mailID}'`;
   const {rows} = await client.query(getQuery);
   client.end;
-  console.log(rows)
   return rows
 }
   
