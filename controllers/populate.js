@@ -7,6 +7,13 @@ const client = require("../database/connection");
 const allTableNames = ['conferenceRoom', 'cubicle', 'hotSeat', 'privateOffice']
 const totalSpaces = [10, 80, 20, 10]
 
+const spaceObj = {
+    conferenceRoom: 10,
+    cubicle: 80,
+    hotSeat: 20,
+    privateOffice: 10
+}
+
 // Generate IDs for conference room. The parameter is an array.
 const generateIDsForConferenceRoom = (seatIDArr) => {
     for(let i = 101; i <= 110; i++){
@@ -89,11 +96,18 @@ const deleteRowsInSingleTable = async (name) => {
 }
 
 // This will count the number of reserved seats in a table passed as parameter.
-const countRowsReserved = async (name) => {
+const countRowsReserved = async (space) => {
     let selectScript = `SELECT "bookedBoolean"
-	FROM reservation."${name}" WHERE "bookedBoolean"=true;`
+	FROM reservation."${space}" WHERE "bookedBoolean"=true;`
     let {rows} = await client.query(selectScript)
     return rows.length
+}
+
+const countRowsAvailable = async (space) => {
+    let totalSpace = spaceObj[space]
+    countRowsReserved(space).then((reserved) => {
+        return totalSpace - reserved
+    })
 }
 
 // This will populate space table.
@@ -132,6 +146,7 @@ const refreshTable = async (name) => {
 
 // This function will refresh all tables.
 const refreshAllTables = async () => {
+    console.log("request received.")
     await allTableNames.forEach((table) => {
         refreshTable(table)
     })
@@ -192,7 +207,8 @@ const populateFunctions = {
     refreshTable,
     refreshAllTables,
     makeReservation,
-    cancelReservation
+    cancelReservation,
+    countRowsAvailable
 } 
 
 module.exports = populateFunctions

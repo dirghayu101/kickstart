@@ -58,3 +58,20 @@
     cursor: pointer;
     transition: 0.4s ease;
 }
+
+.remove-book-btn{
+    margin-top: 18px;
+    border-radius: var(--card-border-radius);
+    height: 7vh;
+    width: 10vw;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 1px solid black;
+    transition: 0.4s ease;
+}
+.remove-book-btn:hover{
+    background-color: rgba(198, 81, 81, 0.754);
+    color: white;
+    cursor: pointer;
+    transition: 0.4s ease;
+}

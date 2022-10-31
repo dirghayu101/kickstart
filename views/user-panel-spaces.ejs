@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--  -->
     <title>
-        <%-db.fName%>'s Panel
     </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="../styles/adminStyles/general.css">
@@ -85,7 +84,52 @@
         <!-- Main section starts here. -->
         <main>
 
-            <%-data.mainBody%>
+            <h1 id="bookHeading">Book Your Space</h1>
+            <div class="outer-box">
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/conferenceRoom.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Conference Room</h2>
+                        <p>For ₹2000 per hour.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                        <!-- book-btn is the class for add to cart option. -->
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/privateOffice.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Private Office</h2>
+                        <p>From ₹27,000 per month.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/hotSeat.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Hot Seat</h2>
+                        <p>From ₹18,000 per month</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/cubicle.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Cubicle</h2>
+                        <p>From ₹12,000 per month.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+
 
         </main>
         <!-- Main Section ends here. -->
@@ -104,7 +148,6 @@
                 <div class="profile">
                     <div class="info">
                         <p>Hey, <b>
-                                <%-db.fName%>
                             </b></p>
                         <small class="text-muted">User</small>
                     </div>
@@ -155,8 +198,28 @@
                 document.body.appendChild(scriptTag)
             })
         }
+
+        let allBtn = document.querySelectorAll(".addBtn")
+        allBtn.forEach((btn) => btn.addEventListener('click', () => {
+            btn.innerHTML = "Added"
+            btn.className = "removeBtn remove-book-btn"
+        }))
+
+        let allRemoveBtn = document.querySelectorAll('.removeBtn')
+
+        allRemoveBtn.forEach((btn) => btn.addEventListener('mouseover', () => {
+            if(btn.classList.contains('remove-book-btn')){
+                btn.innerHTML = "Remove"
+            }
+        }))
+
+        allRemoveBtn.forEach((btn) => btn.addEventListener('mouseout', () => {
+            if(btn.classList.contains('remove-book-btn')){
+                btn.innerHTML = "Added"
+            }
+        }))
     </script>
-    <%-data.script%>
+
 </body>
 
 </html>
