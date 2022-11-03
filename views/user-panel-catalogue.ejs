@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--  -->
     <title>
-        <%-db.fName%>'s Panel
     </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet"
@@ -19,6 +17,8 @@
     <link rel="stylesheet" href="../styles/adminStyles/media-queries.css">
     <link rel="stylesheet" href="../styles/userStyles/price-catalogue.css">
     <link rel="stylesheet" href="../styles/userStyles/cart-styles.css">
+
+
 </head>
 
 <body>
@@ -86,43 +86,86 @@
         <div></div>
         <!-- Main section starts here. -->
         <main>
-
-            <%-data.mainBody%>
-
+            <h1 id="bookHeading">Book Your Space</h1>
+            <div class="outer-box">
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/conferenceRoom.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Conference Room</h2>
+                        <p>For ₹2000 per hour.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                        <!-- book-btn is the class for add to cart option. -->
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/privateOffice.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Private Office</h2>
+                        <p>From ₹27,000 per month.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/hotSeat.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Hot Seat</h2>
+                        <p>From ₹18,000 per month</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+                <div class="space">
+                    <div class="image-box">
+                        <img src="/assets/user-panel/catalogue/cubicle.webp" class="space-image">
+                    </div>
+                    <div class="space-info">
+                        <h2>Cubicle</h2>
+                        <p>From ₹12,000 per month.</p>
+                        <button class="book-btn addBtn removeBtn">Add to cart</button>
+                    </div>
+                </div>
+            </div>
         </main>
         <!-- Main Section ends here. -->
-    <div></div>
+        <div></div>
         <div class="outer-right">
             <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">
-                        menu
-                    </span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">
+                            menu
+                        </span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>
+                                </b></p>
+                            <small class="text-muted">User</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="/assets/user-panel/profilePicture.png" alt="" srcset="">
+                        </div>
+                    </div>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey, <b>
-                                <%-db.fName%>
-                            </b></p>
-                        <small class="text-muted">User</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="/assets/user-panel/profilePicture.png" alt="" srcset="">
-                    </div>
+                <div class="cart-btn">
+                    <button>Checkout</button>
                 </div>
             </div>
-            <div class="cart-btn">
-                <button onclick="getPage('to-cart')"></button>
-            </div>
         </div>
-        </div>
-
     </div>
+
+    <!-- This script is temporary as this page is quite messy already.-->
+    <script src="/js/user/user-catalogue.js"></script>
+
     <script>
         sideMenu = document.querySelector("aside");
         menuBtn = document.querySelector("#menu-btn");
@@ -147,15 +190,6 @@
         })
 
         getPage = async (params) => {
-            if(params === 'spaces'){
-                let flowControl = JSON.parse(localStorage.getItem("cartData"))
-                if(flowControl !== null){
-                    flowControl = flowControl.filter((space) => space.value!==0)
-                    if(flowControl.length !== 0){
-                        params = "to-cart"
-                    }
-                }
-            }
             let page = await fetch(`/user/${params}`, {
                 method: 'GET',
                 headers: {
@@ -171,8 +205,35 @@
                 document.body.appendChild(scriptTag)
             })
         }
+
+        allBtn = document.querySelectorAll(".addBtn")
+        allRemoveBtn = document.querySelectorAll(".removeBtn")
+        allBtn.forEach((btn) => btn.addEventListener('click', () => {
+            btn.innerHTML = "Added"
+            btn.className = "removeBtn remove-book-btn"
+            btn.addEventListener('click', () => {
+                btn.innerHTML = "Add to cart"
+                btn.className = "book-btn addBtn removeBtn"
+            })
+        }))
+
+        allRemoveBtn.forEach((btn) => btn.addEventListener('mouseover', () => {
+            if (btn.classList.contains('remove-book-btn')) {
+                btn.innerHTML = "Remove"
+            }
+        }))
+
+        allRemoveBtn.forEach((btn) =>
+            btn.addEventListener('mouseout', () => {
+                if (btn.classList.contains('remove-book-btn')) {
+                    btn.innerHTML = "Added"
+                }
+            }))
+
+
+
     </script>
-    <%-data.script%>
+
 </body>
 
 </html>

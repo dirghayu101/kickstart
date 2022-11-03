@@ -2,6 +2,8 @@
     text-align: center;
 }
 
+
+
 .space{
     display: grid;
     grid-template-columns: 53% auto;

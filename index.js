@@ -21,9 +21,6 @@ app.use("/price", priceRoutes)
 app.use("/admin", adminRoutes)
 app.use("/user", userRoutes)
 
-app.use("/temporary", (req, res) => {
-  res.render("user-panel-spaces")
-})
 
 const port = process.env.PORT || 3000
 

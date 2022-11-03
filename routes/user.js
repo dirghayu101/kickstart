@@ -13,4 +13,6 @@ router.post("/login", user.loginPagePost);
 
 router.get("/:path", user.dashboardPath);
 
+router.get("/register", user.registerUser)
+
 module.exports = router

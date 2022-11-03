@@ -5,7 +5,16 @@ let menuBtn = undefined
 let closeBtn = undefined
 let themeToggler = undefined
 let getPage = undefined
-
+let allBtn = undefined
+let allRemoveBtn = undefined
+let increments = undefined
+let decrements = undefined
+let itemValues = undefined
+let spaceDataObjects = undefined
+let putTotal = undefined
+let cartItems = undefined
+let eventListenersAllBtn = undefined
+let cartButton = undefined
 
 async function loginUser(event) {
   event.preventDefault();
@@ -48,3 +57,52 @@ async function getUserPage(result){
     document.body.appendChild(scriptTag)
   })
 }
+
+let getDate = () => {
+  const date = new Date()
+  let currentYear = date.getFullYear()
+  let currentMonth = undefined
+  let currentDate = undefined
+  if(date.getMonth().toString().length !== 2){
+    currentMonth = '0'+date.getMonth().toString()
+  } else{
+    currentMonth = date.getMonth()
+  }
+  if(date.getDate().toString().length !== 2){
+    currentDate = '0'+date.getDate().toString()
+  } else{
+    currentDate = date.getMonth()
+  }
+  let dateString = currentYear + '-' + currentMonth + '-' + currentDate
+  return dateString
+}
+
+let putCartItems = (cartItems) => {cartItems.forEach((item) => {
+  let thisItem = spaceDataObjects[item.itemID];
+  let { imgSrc, objName, price } = thisItem;
+  let value = item.value
+  let div = document.createElement('div')
+  let defaultDate = getDate()
+  div.innerHTML  = `${`<div class="item-row">
+  <div class="item-picture">
+      <img src="`}`+imgSrc+`${`" srcset="">
+  </div>
+  <div class="space-type">
+      <p>`}`+objName+`${`</p>
+  </div>
+  <div class="number-item">
+      <span class="material-symbols-rounded decrement">remove</span>
+      <span class="quantity item-value">`}`+value+`${`</span>
+      <span class="material-symbols-rounded increment">add</span>
+  </div>
+  <div class="date">
+      <input type="date" value=${defaultDate}>
+  </div>
+  <div class="price">
+      <p>₹`}`+price+`${`</p>
+  </div>
+</div>`}`;
+
+  document.querySelector("#insertRows").appendChild(div)
+});}
+

@@ -38,6 +38,10 @@ const loginPagePost = async (req, res) => {
     }
 }
 
+const registerUser = async (req, res) => {
+    console.log("Received request in register user.")
+}
+
 const dashboardPath = async (req, res) => {
   let authBody = req.headers.authorization.split(' ')
   let token = authBody[0]
@@ -67,6 +71,12 @@ const dashboardPath = async (req, res) => {
       data: userData.orders,
     });
     
+  } else if(requestKeyword === 'to-cart'){
+    res.render("user-panel", {
+      db: userInformation[0],
+      data: userData.cart,
+    })
+
   } else if(requestKeyword === "feedback"){
     res.render("user-panel", {
       db: userInformation[0],
@@ -90,5 +100,5 @@ const dashboardPath = async (req, res) => {
   }
 }
 
-const user = {signUpPage, loginPage, signUpPagePost, loginPagePost, dashboardPath}
+const user = {signUpPage, loginPage, signUpPagePost, loginPagePost, dashboardPath, registerUser}
 module.exports = user
