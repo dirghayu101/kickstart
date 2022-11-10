@@ -17,6 +17,9 @@ let makeReservationObj = {
   phoneNumber: 7668722367,
   seatIDs: [401, 402, 403]
 }
+
+start: 2022-9-28 06:00:00
+end: 2022-9-28 23:59:59
 */
 
 //! The cancelReservationObj resets the row successfully.

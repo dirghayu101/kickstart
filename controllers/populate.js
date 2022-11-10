@@ -190,6 +190,40 @@ const cancelReservation = async (obj) => {
     })
 }
 
+const getAllSeatsAvailable = async (space) => {
+    let selectScript = `SELECT "seatID"
+	FROM reservation."${space}" WHERE "bookedBoolean"=false;`
+    let {rows} = await client.query(selectScript)
+    rows = rows.map((value)=>value.seatID)
+    return rows
+}
+
+const getSeatsAvailableObject = async (spacesArr) => {
+    const spaceObj = {}
+    await Promise.all(
+        spacesArr.map(async (space) => {
+            let temp = space
+            space = space.split(' ').join().replace(',', '')
+            space = space.replace(space.charAt(0), space.charAt(0).toLowerCase()) 
+            let seats = await getAllSeatsAvailable(space)
+            if(seats != 0){
+                spaceObj[temp] = seats.length
+            }
+    }))
+    return spaceObj
+    }
+
+
+const getSeats = async(space, numberOfSeats) => {
+    let seats = await getAllSeatsAvailable(space)
+    let seatArr = []
+    while(numberOfSeats != 0){
+        seatArr.push(seats.pop())
+        numberOfSeats -= 1
+    }
+    return seatArr
+}
+
 const populateFunctions = {
     generateIDsForConferenceRoom,
     insertInConferenceRoom,
@@ -206,9 +240,11 @@ const populateFunctions = {
     populateSpacesTable,
     refreshTable,
     refreshAllTables,
+    getSeats,
     makeReservation,
     cancelReservation,
-    countRowsAvailable
+    countRowsAvailable,
+    getSeatsAvailableObject
 } 
 
 module.exports = populateFunctions

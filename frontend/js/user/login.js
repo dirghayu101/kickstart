@@ -15,6 +15,8 @@ let putTotal = undefined
 let cartItems = undefined
 let eventListenersAllBtn = undefined
 let cartButton = undefined
+let spaceObjects = undefined
+let getCartItems = undefined
 
 async function loginUser(event) {
   event.preventDefault();
@@ -34,7 +36,6 @@ async function loginUser(event) {
 
   if (result.status === "ok") {
     getUserPage(result);
-    console.log("Got the token: ", result.data);
   } else {
     alert(result.error);
   }
@@ -106,3 +107,53 @@ let putCartItems = (cartItems) => {cartItems.forEach((item) => {
   document.querySelector("#insertRows").appendChild(div)
 });}
 
+const populateCataloguePage = (spaceArr) => {
+  spaceArr.forEach((space) => {
+      let {img, spaceType, spacePrice} = spaceObjects[space]
+      let div = document.createElement('div')
+      div.innerHTML = `<div class="space">
+          <div class="image-box">
+              <img src="${img}" class="space-image">
+          </div>
+          <div class="space-info">
+              <h2>${spaceType}</h2>
+              <p>${spacePrice}.</p>
+              <button class="book-btn addBtn removeBtn">Add to cart</button>
+          </div>
+      </div>`
+      document.querySelector('#myCatalogue').appendChild(div)
+
+  })
+}
+
+const createSpaceCatalogue = async () => {
+  const result = await fetch('/user/space-status', {
+      method: 'GET',
+      headers: {
+          Authorization: `${localStorage.getItem('userToken')} ${localStorage.getItem('mail')}`
+      },
+  }).then((res) => res.json())
+  let resultArr = Object.keys(result)
+  populateCataloguePage(resultArr)
+  cartItems = JSON.parse(localStorage.getItem("cartData")) || []
+  allBtn = document.querySelectorAll(".addBtn")
+  allRemoveBtn = document.querySelectorAll(".removeBtn")
+  eventListenersAllBtn()
+  removeBtn()
+  openCartPage()
+}
+
+const getSpaceStatus = async () => {
+  const result = await fetch('/user/space-status', {
+    method: 'GET',
+    headers: {
+      Authorization: `${localStorage.getItem('userToken')} ${localStorage.getItem('mail')}`
+    },
+  }).then((res) => res.json())
+  return result  
+}
+
+const getAvailableSpaces = async () => {
+  let spaceObj = await getSpaceStatus()
+  return Object.keys(spaceObj)
+}

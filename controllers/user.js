@@ -38,20 +38,13 @@ const loginPagePost = async (req, res) => {
     }
 }
 
-const registerUser = async (req, res) => {
-    console.log("Received request in register user.")
-}
-
 const dashboardPath = async (req, res) => {
   let authBody = req.headers.authorization.split(' ')
   let token = authBody[0]
   let email = authBody[1]
-  console.log("Email ", email)
-  console.log("Token is: ", `"${token}"`)
   if (!jwt.verify(token, process.env.JWT_USER)) {
     return res.json({ status: "error", error: "Invalid username/password" });
   }
-  console.log("Verification crossed.")
   const userInformation = await db.getUserInformation(email)
   const requestKeyword = req.params.path;
   const userData = require("../data/userDataObject")
@@ -100,5 +93,49 @@ const dashboardPath = async (req, res) => {
   }
 }
 
-const user = {signUpPage, loginPage, signUpPagePost, loginPagePost, dashboardPath, registerUser}
+const reservationDB = require('./populate')
+
+
+
+const makeReservation = async (req, res) => {
+  let authBody = req.headers.authorization.split(' ')
+  let token = authBody[0]
+  let email = authBody[1]
+  if (!jwt.verify(token, process.env.JWT_USER)) {
+    return res.json({ status: "error", error: "Invalid username/password" });
+  }
+  let userInfo = await db.getUserInformation(email)
+  userInfo = userInfo[0]
+  let {reservationArr} = req.body
+  reservationArr.forEach(async (spaceType) => {
+    let space = spaceType.space.split(' ').join().replace(',', '')
+    space = space.replace(space.charAt(0), space.charAt(0).toLowerCase()) 
+    let seats = await reservationDB.getSeats(space, spaceType.numberOfSpace)
+    let startTime = spaceType.reservationDate + ' 06:00:00'
+    let endTime = spaceType.reservationDate + ' 23:59:59'
+    let phoneNumber = parseInt(userInfo.phoneNumber)
+    let makeReservationObj = {
+      space: space,
+      start: startTime,
+      end: endTime,
+      phoneNumber: phoneNumber,
+      seatIDs: seats
+    }
+    reservationDB.makeReservation(makeReservationObj)
+  })
+  res.json({status: 'ok'})
+}
+
+const getSpaceStatus = async (req, res) => {
+  // let authBody = req.headers.authorization.split(' ')
+  // let token = authBody[0]
+  // if (!jwt.verify(token, process.env.JWT_USER)) {
+  //   return res.json({ status: "error", error: "Invalid username/password" });
+  // }
+  let spaceArr = ['Conference Room', 'Cubicle', 'Private Office', 'Hot Seat']
+  let result = await reservationDB.getSeatsAvailableObject(spaceArr)
+  res.json(result)
+}
+
+const user = {signUpPage, loginPage, signUpPagePost, loginPagePost, dashboardPath, makeReservation, getSpaceStatus}
 module.exports = user

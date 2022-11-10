@@ -21,6 +21,9 @@ app.use("/price", priceRoutes)
 app.use("/admin", adminRoutes)
 app.use("/user", userRoutes)
 
+app.use("/temporary", (req, res) => {
+  res.render("user-panel-catalogue")
+})
 
 const port = process.env.PORT || 3000
 
@@ -40,25 +43,26 @@ const start = async () => {
 start();
 
 
-const populateDatabase = () => {
+const populateDatabase = async () => {
   const dbPopulate = require("./controllers/populate")
   let seatArr = []
   dbPopulate.generateIDsForHotSeat(seatArr)
-  dbPopulate.insertInHotSeat(seatArr)
+  await dbPopulate.insertInHotSeat(seatArr)
   seatArr = []
   dbPopulate.generateIDsForCubicle(seatArr)
-  dbPopulate.insertInCubicle(seatArr)
+  await dbPopulate.insertInCubicle(seatArr)
   seatArr = []
   dbPopulate.generateIDsForConferenceRoom(seatArr)
-  dbPopulate.insertInConferenceRoom(seatArr)
+  await dbPopulate.insertInConferenceRoom(seatArr)
   seatArr = []
   dbPopulate.generateIDsForPrivateOffice(seatArr)
-  dbPopulate.insertInPrivateOffice(seatArr)
+  await dbPopulate.insertInPrivateOffice(seatArr)
 }
 
 
-const deleteRowsInReservationTables = () => {
+const deleteRowsInReservationTables = async () => {
   const dbPopulate = require("./controllers/populate")
-  dbPopulate.deleteRowsInAllTable()
+  await dbPopulate.deleteRowsInAllTable()
 }
+
 

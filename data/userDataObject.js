@@ -5,56 +5,35 @@ const userData = {
     },
     spaces: {
         mainBody: `<h1 id="bookHeading">Book Your Space</h1>
-            <div class="outer-box">
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/conferenceRoom.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Conference Room</h2>
-                        <p>For ₹2000 per hour.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                        <!-- book-btn is the class for add to cart option. -->
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/privateOffice.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Private Office</h2>
-                        <p>From ₹27,000 per month.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/hotSeat.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Hot Seat</h2>
-                        <p>From ₹18,000 per month</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/cubicle.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Cubicle</h2>
-                        <p>From ₹12,000 per month.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
+            <div class="outer-box" id="myCatalogue">
             </div>`,
         script: `<script>document.querySelector('.spaces').classList.add('active')
         cartButton = document.querySelector('.cart-btn button')
         cartButton.innerHTML = 'Go to cart'
         cartButton.classList.add('go-to-cart')
-        cartItems = JSON.parse(localStorage.getItem("cartData")) || []
-        allBtn = document.querySelectorAll(".addBtn")
-allRemoveBtn = document.querySelectorAll(".removeBtn")
+
+        spaceObjects = {
+            'Conference Room': {
+                img: "/assets/user-panel/catalogue/conferenceRoom.webp",
+                spaceType: "Conference Room",
+                spacePrice: "For ₹6000 per day",
+            },
+            'Private Office': {
+                img: "/assets/user-panel/catalogue/privateOffice.webp",
+                spaceType: "Private Office",
+                spacePrice: "For ₹1500 per day",
+            },
+            'Hot Seat': {
+                img: "/assets/user-panel/catalogue/hotSeat.webp",
+                spaceType: "Hot Seat",
+                spacePrice: "For ₹600 per day",
+            },
+            'Cubicle': {
+                img: "/assets/user-panel/catalogue/cubicle.webp",
+                spaceType: "Cubicle",
+                spacePrice: "For ₹300 per day",
+            },
+        }
 
 eventListenersAllBtn = () => { 
         allBtn.forEach((btn) => btn.addEventListener('click', () => {
@@ -87,20 +66,28 @@ eventListenersAllBtn = () => {
             })
     }))
 }
-eventListenersAllBtn()
 
-allRemoveBtn.forEach((btn) => btn.addEventListener('mouseover', () => {
-    if (btn.classList.contains('remove-book-btn')) {
-        btn.innerHTML = "Remove"
-    }
-}))
-
-allRemoveBtn.forEach((btn) =>
-    btn.addEventListener('mouseout', () => {
+function removeBtn(){
+    allRemoveBtn.forEach((btn) => btn.addEventListener('mouseover', () => {
         if (btn.classList.contains('remove-book-btn')) {
-            btn.innerHTML = "Added"
+            btn.innerHTML = "Remove"
         }
     }))
+
+    allRemoveBtn.forEach((btn) =>
+        btn.addEventListener('mouseout', () => {
+            if (btn.classList.contains('remove-book-btn')) {
+                btn.innerHTML = "Added"
+            }
+        }))
+}
+    
+    function openCartPage() {
+        cartButton.addEventListener('click', () => {
+            getPage('to-cart')
+        });
+    }
+    createSpaceCatalogue()
         </script>`
     },
     cart:{
@@ -140,8 +127,9 @@ allRemoveBtn.forEach((btn) =>
         cartButton = document.querySelector('.cart-btn button')
         cartButton.innerHTML = 'checkout'
         cartButton.classList.add('checkout')
-        cartItems = JSON.parse(localStorage.getItem("cartData"));
-cartItems = cartItems.filter((item) => item.value !== 0);
+       
+        
+
 
 spaceDataObjects = {
   Cubicle: {
@@ -165,8 +153,26 @@ spaceDataObjects = {
     price: 6000,
   },
 };
+//modifyCart() --> This will return a promise which would be pending.
+ getCartItems = async () => {
+     cartItems = JSON.parse(localStorage.getItem("cartData")) || []
+     let availableCartItems = await getAvailableSpaces()
+     cartItems = cartItems.filter((item) => item.value !== 0)
+     let tempObj = {}
+    availableCartItems.forEach((item) => {
+        let temp = cartItems.find((value) => value.itemID === item)
+        if(item === temp.itemID){
+            tempObj[item] = cartItems.find((value) => value.itemID === item)
+        }
+        cartItems.find((value) => {
+            console.log("This ", value.itemID)
 
-putCartItems(cartItems)
+        })
+        console.log(item)
+    })
+    }
+    getCartItems()
+    putCartItems(cartItems)
 
  increments = document.querySelectorAll(".increment");
  decrements = document.querySelectorAll(".decrement");
@@ -238,6 +244,47 @@ putTotal = () => {
 };
 
 putTotal();
+
+function getOrderArray() {
+    let cartRows = document.querySelectorAll("#insertRows .item-row")
+    let reservationArr = []
+    cartRows.forEach((row) => {
+        let spaceType = row.querySelector('.space-type p').innerHTML.trim()
+        let numberOfSpace = parseInt(row.querySelector('.item-value').innerHTML.trim())
+        let reservationDate = row.querySelector('.date input').value
+        let myObj = { space: spaceType, numberOfSpace: numberOfSpace, reservationDate: reservationDate }
+        reservationArr.push(myObj)
+    })
+    return reservationArr
+}
+
+function makeReservation() {
+    cartButton.addEventListener('click', async() => {
+        let reservationArr = getOrderArray()
+        let authorizationHeader = localStorage.getItem('userToken') + " " +localStorage.getItem('mail')
+        
+        const result = await fetch("/user/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: authorizationHeader
+            },
+            body: JSON.stringify({
+                reservationArr
+            }),
+        }).then((res) => res.json())
+        if(result.status === 'ok'){
+            cartItems = JSON.parse(localStorage.getItem("cartData"))
+            cartItems.forEach((item) => item.value = 0)
+            localStorage.setItem("cartData", JSON.stringify(cartItems))
+            getPage('orders')
+        } else{
+            alert(result.error)
+        }
+    })
+}
+
+makeReservation()
         </script>
         `,
     },

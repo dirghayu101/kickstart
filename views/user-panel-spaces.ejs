@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../styles/userStyles/price-catalogue.css">
     <link rel="stylesheet" href="../styles/userStyles/cart-styles.css">
 
-    
+
 </head>
 
 <body>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div id="insertRows">
-                        
+
                         </div>
                     </div>
 
@@ -217,12 +217,48 @@
                 }
             }))
 
-            let cartButton = document.querySelector('.cart-btn button')
-            cartButton.addEventListener('click', makeReservation())
+        let cartButton = document.querySelector('.cart-btn button')
 
-            function makeReservation() {
+        function getOrderArray() {
+            let cartRows = document.querySelectorAll("#insertRows .item-row")
+            let reservationArr = []
+            cartRows.forEach((row) => {
+                let spaceType = row.querySelector('.space-type p').innerHTML.trim()
+                let numberOfSpace = parseInt(row.querySelector('.item-value').innerHTML.trim())
+                let reservationDate = row.querySelector('.date input').value
+                let myObj = { space: spaceType, numberOfSpace: numberOfSpace, reservationDate: reservationDate }
+                reservationArr.push(myObj)
+            })
+            return reservationArr
+        }
+
+        function makeReservation() {
+            cartButton.addEventListener('click', async() => {
+                let reservationArr = getOrderArray()
+                let authorizationHeader = localStorage.getItem('userToken') + " " +localStorage.getItem('mail')
                 
-            }
+                const result = await fetch("/user/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: authorizationHeader
+                    },
+                    body: JSON.stringify({
+                        reservationArr
+                    }),
+                }).then((res) => res.json())
+                if(result.status === 'ok'){
+                    cartItems.forEach((item) => item.value = 0)
+                    getPage('orders')
+                } else{
+                    alert(result.error)
+                }
+            })
+        }
+
+        makeReservation()
+
+        
 
     </script>
 

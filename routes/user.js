@@ -11,8 +11,11 @@ router.post("/signup", user.signUpPagePost);
   
 router.post("/login", user.loginPagePost);
 
+router.post("/register", user.makeReservation)
+
+router.get("/space-status", user.getSpaceStatus)
+
 router.get("/:path", user.dashboardPath);
 
-router.get("/register", user.registerUser)
 
 module.exports = router

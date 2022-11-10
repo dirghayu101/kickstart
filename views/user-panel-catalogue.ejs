@@ -87,48 +87,7 @@
         <!-- Main section starts here. -->
         <main>
             <h1 id="bookHeading">Book Your Space</h1>
-            <div class="outer-box">
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/conferenceRoom.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Conference Room</h2>
-                        <p>For ₹2000 per hour.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                        <!-- book-btn is the class for add to cart option. -->
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/privateOffice.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Private Office</h2>
-                        <p>From ₹27,000 per month.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/hotSeat.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Hot Seat</h2>
-                        <p>From ₹18,000 per month</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
-                <div class="space">
-                    <div class="image-box">
-                        <img src="/assets/user-panel/catalogue/cubicle.webp" class="space-image">
-                    </div>
-                    <div class="space-info">
-                        <h2>Cubicle</h2>
-                        <p>From ₹12,000 per month.</p>
-                        <button class="book-btn addBtn removeBtn">Add to cart</button>
-                    </div>
-                </div>
+            <div class="outer-box" id="myCatalogue">
             </div>
         </main>
         <!-- Main Section ends here. -->
@@ -230,6 +189,41 @@
                 }
             }))
 
+
+        
+
+
+
+        /*
+        let putCartItems = (cartItems) => {cartItems.forEach((item) => {
+  let thisItem = spaceDataObjects[item.itemID];
+  let { imgSrc, objName, price } = thisItem;
+  let value = item.value
+  let div = document.createElement('div')
+  let defaultDate = getDate()
+  div.innerHTML  = `${`<div class="item-row">
+  <div class="item-picture">
+      <img src="`}`+imgSrc+`${`" srcset="">
+  </div>
+  <div class="space-type">
+      <p>`}`+objName+`${`</p>
+  </div>
+  <div class="number-item">
+      <span class="material-symbols-rounded decrement">remove</span>
+      <span class="quantity item-value">`}`+value+`${`</span>
+      <span class="material-symbols-rounded increment">add</span>
+  </div>
+  <div class="date">
+      <input type="date" value=${defaultDate}>
+  </div>
+  <div class="price">
+      <p>₹`}`+price+`${`</p>
+  </div>
+</div>`}`;
+
+  document.querySelector("#insertRows").appendChild(div)
+});}
+        */
 
 
     </script>
