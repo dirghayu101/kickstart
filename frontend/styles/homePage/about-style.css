@@ -1,0 +1,28 @@
+:root {
+    --font-1: "Poppins", sans-serif;
+    --font-2: "Roboto", sans-serif;
+    --font-3: "Roboto Slab", serif;
+  }
+
+.about{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+}
+
+.about-content{
+    padding: 70px;
+}
+
+.about-content h2{
+    padding-bottom: 25px; 
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+.about-content p{
+    font-size: 1rem;
+}
+
+.image-section img{
+    width: 50vw;
+}

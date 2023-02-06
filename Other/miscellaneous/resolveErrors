@@ -1,0 +1,5 @@
+In the user.js controller file, the database is returning undefined. I am not able to setup names in my user panel because of this.
+
+Here are the references I have referred so far:
+-> https://stackoverflow.com/questions/64103494/why-is-this-db-function-returning-undefined
+-> https://stackoverflow.com/questions/14220321/how-do-i-return-the-response-from-an-asynchronous-call

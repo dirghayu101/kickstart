@@ -1,0 +1,119 @@
+This formula has created a default database cluster with:
+  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@14
+For more details, read:
+  https://www.postgresql.org/docs/14/app-initdb.html
+
+To restart postgresql@14 after an upgrade:
+  brew services restart postgresql@14
+Or, if you don't want/need a background service you can just run:
+  /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14
+
+These are the notes from official documentation of postgresql
+
+TODO: Start postgresql: brew services start postgresql
+      Restart Postgresql: brew services restart postgresql@14
+Stop PostgreSQL: brew services stop postgresql
+
+TODO: Create database in PostgreSQL: createdb mydb
+Delete database in PostgreSQL: dropdb mydb
+
+There are many options associated with createdb command, you can see them in this website
+https://www.postgresql.org/docs/current/app-createdb.html
+
+Once you have created a database, you can access it by:
+
+-> Running the PostgreSQL interactive terminal program, called psql, which allows you to 
+interactively enter, edit, and execute SQL commands.
+
+-> Using an existing graphical frontend tool like pgAdmin or an office suite with ODBC or 
+JDBC support to create and manipulate a database. These possibilities are not covered in this 
+tutorial.
+
+-> Writing a custom application, using one of the several available language bindings. These 
+possibilities are discussed further in Part IV.
+
+You probably want to start up psql to try the examples in this tutorial. It can be activated for 
+the mydb database by typing the command:
+
+psql is a terminal-based front-end to PostgreSQL. It enables you to type in queries interactively, 
+issue them to PostgreSQL, and see the query results. Alternatively, input can be from a file or from 
+command line arguments. In addition, psql provides a number of meta-commands and various shell-like 
+features to facilitate writing scripts and automating a wide variety of tasks.
+
+
+TODO: $ psql mydb
+
+The psql program has a number of internal commands that are not SQL commands. They begin with the 
+backslash character, “\”. For example, you can get help on the syntax of various PostgreSQL SQL 
+commands by typing:
+mydb=> \h
+
+To get out of psql, type:
+mydb=> \q
+
+psql -s flag: -s (--single-step): Run in single-step mode. That means the user is prompted before 
+each command is sent to the server, with the option to cancel execution as well. Use this to debug scripts.
+
+To access Database in a single step mode: psql -s mydb 
+
+
+You can create a new table by specifying the table name, along with all column names and their types:
+
+CREATE TABLE weather (
+    city            varchar(80),
+    temp_lo         int,           -- low temperature
+    temp_hi         int,           -- high temperature
+    prcp            real,          -- precipitation
+    date            date
+);
+
+White space (i.e., spaces, tabs, and newlines) can be used freely in SQL commands. That means you can 
+type the command aligned differently than above, or even all on one line. Two dashes (“--”) introduce comments.
+
+If you don't need a table any longer or want to recreate it differently you can remove it using the following command:
+
+DROP TABLE tablename;
+
+
+
+
+
+
+
+
+
+
+
+
+
+Side-notes are here: 
+If your site administrator has not set things up in the default way, you might have some more work to do. 
+For example, if the database server machine is a remote machine, you will need to set the PGHOST environment 
+variable to the name of the database server machine. The environment variable PGPORT might also have to be set. 
+The bottom line is this: if you try to start an application program and it complains that it cannot connect to 
+the database, you should consult your site administrator or, if that is you, the documentation to make sure that 
+your environment is properly set up. If you did not understand the preceding paragraph then read the next section.
+
+In database jargon, PostgreSQL uses a client/server model. A PostgreSQL session consists of the following cooperating 
+processes (programs):
+
+A server process, which manages the database files, accepts connections to the database from client applications, and 
+performs database actions on behalf of the clients. The database server program is called postgres.
+
+The user's client (frontend) application that wants to perform database operations. Client applications can be very 
+diverse in nature: a client could be a text-oriented tool, a graphical application, a web server that accesses the 
+database to display web pages, or a specialized database maintenance tool. Some client applications are supplied with 
+the PostgreSQL distribution; most are developed by users.
+
+As is typical of client/server applications, the client and the server can be on different hosts. In that case they 
+communicate over a TCP/IP network connection. You should keep this in mind, because the files that can be accessed on a 
+client machine might not be accessible (or might only be accessible using a different file name) on the database server 
+machine.
+
+The PostgreSQL server can handle multiple concurrent connections from clients. To achieve this it starts (“forks”) a new 
+process for each connection. From that point on, the client and the new server process communicate without intervention by 
+the original postgres process. Thus, the supervisor server process is always running, waiting for client connections, whereas 
+client and associated server processes come and go. 
+
+https://www.postgresql.org/docs/current/installation.html. --> Installing PostgreSQL
+

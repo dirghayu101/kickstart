@@ -1,0 +1,22 @@
+Q: What is JWT?
+-> JWT is used for authorization, not authentication. 
+Authentication is when you verify using the email and password entered by him whereas authorization is when you verify that the user requesting information from the server is the same one who logged in.
+
+There are two ways of doing authorization:
+-> The first one is by using cookies.
+-> The second one is by using JSON Web Token.
+
+
+Authentication Opens:
+1. Sessions                                             ||
+2. JSON Web Token                                       || Complexity Increase
+3. OAuth (Used by Google, Github, etc.)                 ||
+4. Other/Ad-hoc                                        \  /       
+                                                        \/
+
+
+What is the difference between package passport-jwt and jsonwebtoken?
+1. passport-jwt is member of the passport ecosystem, while express-jwt is standalone.
+2. Passport is Authentication Middleware for Node.JS, it is not for any specific method of authentication, the method for authentication like OAuth, JWT is implemented in Passport by Strategy pattern, so it means that you can swap the authentication mechanism without affecting other parts of your application.
+
+                                                    

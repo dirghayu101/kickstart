@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login page - KickStart</title>
+    <link rel="stylesheet" href="/styles/userStyles/login-page.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Admin Login</h1>
+      <form method="post" id="login-form">
+        <div class="txt_field">
+          <input type="text" id="email" required>
+          <span></span>
+          <label>Email-ID</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" id="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input style=" margin-bottom: 35px" type="submit" value="Login">
+      </form>
+    </div>
+
+    <script>
+      let sideMenu = undefined;
+      let menuBtn = undefined;
+      let closeBtn = undefined;
+      let themeToggler = undefined;
+      let getPage = undefined;
+      let changeTheme = undefined;
+
+      const form = document.getElementById("login-form");
+      form.addEventListener('submit', loginUser);
+      
+      async function loginUser(event){
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const result = await fetch('/admin/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            password
+          })
+        }).then((res) => res.json())
+
+        if(result.status === 'ok'){
+          getAdmin(result);
+        }
+        else{
+          alert(result.error);
+        }
+
+
+      }
+
+      async function getAdmin(result){
+        localStorage.setItem('token', result.data);
+        const adminPanel = await fetch('/admin/dashboard', {
+          method: 'GET',
+          headers: {
+            Authorization: `${localStorage.getItem('token')}`
+          }
+        }).then((res) => res.text())
+        document.querySelector('html').innerHTML = adminPanel;
+        let scriptTags = document.querySelectorAll('script')
+        scriptTags.forEach((tag) =>{
+          let scriptTag = document.createElement('script')
+          scriptTag.innerHTML = tag.innerHTML
+          document.body.appendChild(scriptTag)
+        });
+      }
+    </script>
+  </body>
+</html>

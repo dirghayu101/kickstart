@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/common/common-style.css">
+    <link rel="stylesheet" href="/styles/priceTemplate/template.css">
+    <link rel="stylesheet" href="/styles/common/navbar.css">
+    <link rel="stylesheet" href="/styles/common/footer-style.css">
+    <style>
+        /* Background image will change here. */
+        .first-inner-div {
+            background-image: url('<%=data.imageLink%>');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar sticky">
+        <div class="brand">
+            <a href="#"><span class="styleBrand">K</span>ick<span class="styleBrand">S</span>tart</a>
+        </div>
+        <ul class="navigation-links">
+            <li class="link-page"><a href="#">Home</a></li>
+            <li class="link-page"><a href="#">About</a></li>
+            <li class="link-page"><a href="#">Pricing</a></li>
+            <li class="link-page"><a href="">Book a visit</a></li>
+            <li class="link-page"><a href="/login">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="outer-div">
+            <div class="first-inner-div">
+            </div>
+            <div class="second-inner-div">
+                <div class="second-inner-div-content">
+                    <div class="link"><a href="/">Go Back</a></div>
+                    <h2>
+                        <%=data.heading%>
+                    </h2>
+                    <!-- Price and description will change here. -->
+                    <p class="second-inner-div-para"><%=data.tagLine%></p>
+                    <p class="second-inner-div-para-2"><%=data.description%></p>
+                </div>
+                <div class="second-inner-div-icons">
+                    <div class="icon-box">
+                        <!-- Clock icon -->
+                        <div class="icon-item">
+                            <svg class="icon" viewBox="0 0 488 488" style="enable-background:new 0 0 488 488;"
+                                xml:space="preserve">
+                                <g transform="translate(0 -540.36)">
+                                    <g>
+                                        <g>
+                                            <path d="M351.1,846.96l-97.1-67.9v-116.7c0-5.5-4.5-10-10-10s-10,4.5-10,10v122c0,3.3,1.6,6.3,4.3,8.2l101.4,70.9
+                        c1.7,1.2,3.7,1.8,5.7,1.8v0c3.1,0,6.2-1.5,8.2-4.4C356.7,856.36,355.6,850.16,351.1,846.96z" />
+                                            <path
+                                                d="M416.4,611.96L416.4,611.96c-46.2-46.2-107.4-71.6-172.4-71.6s-126.2,25.4-172.4,71.6C25.4,658.16,0,719.36,0,784.36
+                        s25.4,126.2,71.6,172.4c46.2,46.2,107.4,71.6,172.4,71.6s126.2-25.4,172.4-71.6s71.6-107.4,71.6-172.4S462.6,658.16,416.4,611.96
+                        z M254,1008.16L254,1008.16v-40.8c0-5.5-4.5-10-10-10s-10,4.5-10,10v40.8c-115.6-5.1-208.7-98.2-213.8-213.8H61
+                        c5.5,0,10-4.5,10-10s-4.5-10-10-10H20.2c5.1-115.6,98.2-208.7,213.8-213.8v40.8c0,5.5,4.5,10,10,10s10-4.5,10-10v-40.8
+                        c115.6,5.1,208.7,98.2,213.8,213.8H427c-5.5,0-10,4.5-10,10s4.5,10,10,10h40.8C462.7,909.96,369.6,1003.06,254,1008.16z" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="time-text">24 hour access</span>
+                        </div>
+
+                        <!-- Equipment icon -->
+                        <div class="icon-item">
+                            <svg class="icon" version="1.1" viewBox="0 0 512.001 512.001">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <path
+                                                d="M0.001,0v319.837h16.013v16.231h15.578v-16.231h448.816v16.231h15.578v-16.231H512V0H0.001z M496.422,304.259H15.579
+                        v-8.442h480.844V304.259z M496.422,280.238H15.579v-32.463h480.844V280.238z M496.422,232.198H15.579V15.578h480.844V232.198z" />
+                                            <rect x="215.965" y="256.218" width="16.013" height="15.578" />
+                                            <rect x="247.993" y="256.218" width="16.013" height="15.578" />
+                                            <rect x="280.022" y="256.218" width="16.013" height="15.578" />
+                                            <rect x="92.09" y="63.546"
+                                                transform="matrix(0.7071 0.7071 -0.7071 0.7071 94.2061 -43.7208)"
+                                                width="15.578" height="56.621" />
+
+                                            <rect x="124.11" y="42.28"
+                                                transform="matrix(0.7071 0.7071 -0.7071 0.7071 120.5719 -59.3259)"
+                                                width="15.578" height="147.201" />
+
+                                            <rect x="150.145" y="118.083"
+                                                transform="matrix(0.7071 0.7071 -0.7071 0.7071 143.7662 -71.2871)"
+                                                width="15.578" height="39.63" />
+
+                                            <rect x="118.746" y="112.087"
+                                                transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 480.7735 40.6087)"
+                                                width="226.462" height="15.578" />
+
+                                            <rect x="270.074" y="104.095"
+                                                transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 598.1493 -23.994)"
+                                                width="67.941" height="15.578" />
+
+                                            <rect x="294.233" y="166.13"
+                                                transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 384.1009 530.9897)"
+                                                width="15.578" height="39.63" />
+
+                                            <rect x="398.353" y="50.128"
+                                                transform="matrix(0.7071 0.7071 -0.7071 0.7071 216.455 -246.8004)"
+                                                width="15.578" height="175.511" />
+                                            <path
+                                                d="M0.001,512h351.864V352.3H0.001V512z M15.579,367.878h320.708v128.544H15.579V367.878z" />
+                                            <rect x="39.818" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="71.847" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="103.875" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="135.893" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="167.922" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="199.951" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="231.979" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="264.008" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="296.036" y="392.329" width="16.013" height="15.578" />
+                                            <rect x="39.818" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="71.847" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="103.875" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="135.893" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="167.922" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="199.951" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="231.979" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="264.008" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="296.036" y="424.358" width="16.013" height="15.578" />
+                                            <rect x="39.818" y="456.386" width="16.013" height="15.578" />
+                                            <rect x="71.847" y="456.386" width="16.013" height="15.578" />
+                                            <rect x="264.008" y="456.386" width="16.013" height="15.578" />
+                                            <rect x="296.036" y="456.386" width="16.013" height="15.578" />
+                                            <rect x="103.875" y="456.386" width="144.118" height="15.578" />
+                                            <path d="M448.164,384.327c-21.955,0-39.817,17.862-39.817,39.817v48.041c0,21.955,17.862,39.817,39.817,39.817
+                        c21.955,0,39.817-17.862,39.817-39.817v-48.041C487.98,402.189,470.118,384.327,448.164,384.327z M472.402,472.183
+                        c0,13.365-10.873,24.238-24.238,24.238c-13.365,0-24.238-10.873-24.238-24.238v-48.041c0-13.365,10.874-24.238,24.238-24.238
+                        c13.365,0,24.238,10.873,24.238,24.238V472.183z" />
+                                            <rect x="440.372" y="416.132" width="15.578" height="16.014" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="equipment-text">Fully equipped</span>
+                        </div>
+
+                        <div class="icon-item">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M.221 16.268a15.064 15.064 0 0 0 1.789 1.9C2.008 18.111 2 18.057 2 18a5.029 5.029 0 0 1 3.233-4.678 1 1 0 0 0 .175-1.784A2.968 2.968 0 0 1 4 9a2.988 2.988 0 0 1 5.022-2.2 5.951 5.951 0 0 1 2.022-.715 4.994 4.994 0 1 0-7.913 6.085 7.07 7.07 0 0 0-2.91 4.098zM23.779 16.268a7.07 7.07 0 0 0-2.91-4.1 4.994 4.994 0 1 0-7.913-6.086 5.949 5.949 0 0 1 2.022.715 2.993 2.993 0 1 1 3.614 4.74 1 1 0 0 0 .175 1.784A5.029 5.029 0 0 1 22 18c0 .057-.008.111-.01.167a15.065 15.065 0 0 0 1.789-1.899z" />
+                                <path
+                                    d="M18.954 20.284a7.051 7.051 0 0 0-3.085-5.114A4.956 4.956 0 0 0 17 12a5 5 0 1 0-8.869 3.17 7.051 7.051 0 0 0-3.085 5.114 14.923 14.923 0 0 0 1.968.849C7.012 21.088 7 21.046 7 21a5.031 5.031 0 0 1 3.233-4.678 1 1 0 0 0 .175-1.785A2.964 2.964 0 0 1 9 12a3 3 0 1 1 6 0 2.964 2.964 0 0 1-1.408 2.537 1 1 0 0 0 .175 1.785A5.031 5.031 0 0 1 17 21c0 .046-.012.088-.013.133a14.919 14.919 0 0 0 1.967-.849z" />
+                            </svg>
+                            <span class="crowd-text">Upto 20 Number of People</span>
+                        </div>
+                        <div class="icon-item">
+                            <svg class="icon" viewBox="0 0 54.908 54.908">
+                                <g>
+                                    <path d="M54.615,19.123c-7.243-7.244-16.89-11.233-27.161-11.233S7.537,11.878,0.293,19.123c-0.391,0.391-0.391,1.023,0,1.414
+                s1.023,0.391,1.414,0C8.573,13.67,17.717,9.889,27.454,9.889s18.881,3.781,25.747,10.647c0.195,0.195,0.451,0.293,0.707,0.293
+                s0.512-0.098,0.707-0.293C55.006,20.146,55.006,19.513,54.615,19.123z" />
+                                    <path d="M6.171,25c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293
+                c10.955-10.956,28.781-10.956,39.737,0c0.391,0.391,1.023,0.391,1.414,0s0.391-1.023,0-1.414C37.002,13.266,17.907,13.264,6.171,25
+                z" />
+                                    <path d="M27.454,24.508c-5.825,0-11.295,2.263-15.404,6.371c-0.391,0.391-0.391,1.023,0,1.414s1.023,0.391,1.414,0
+                c3.731-3.73,8.699-5.785,13.99-5.785c5.291,0,10.259,2.055,13.99,5.785c0.195,0.195,0.451,0.293,0.707,0.293
+                s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414C38.75,26.771,33.279,24.508,27.454,24.508z" />
+                                    <path d="M27.454,33.916c-3.612,0-6.551,2.939-6.551,6.552s2.939,6.552,6.551,6.552c3.613,0,6.552-2.939,6.552-6.552
+                S31.067,33.916,27.454,33.916z M27.454,45.019c-2.51,0-4.551-2.042-4.551-4.552s2.042-4.552,4.551-4.552s4.552,2.042,4.552,4.552
+                S29.964,45.019,27.454,45.019z" />
+                                </g>
+                            </svg>
+                            <span class="crowd-text">Free wifi</span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="button">
+                    <!-- TODO: Here I will place some javascript code to check if the person has logged in. If he has already logged in, he will be taken to the checkout page.-->
+                    <button type="button" class="btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="outer-footer">
+            <footer class="footer">
+                <p>Questions? Call 9535672727</p>
+                <div class="footer-cols">
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="/signup">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Legal Notices</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/styles/userStyles/sign-up.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form id="reg-form" action="#">
+          <div class="user-details">
+            <!-- First Name entry is here -->
+            <div class="input-box">
+              <span class="details">First Name</span>
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Enter your first name"
+              />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+
+            <!-- Last Name entry is here -->
+            <div class="input-box">
+              <span class="details">Last Name</span>
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Enter your last name"
+              />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+
+            <!-- Email entry is here -->
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" id="emailID" placeholder="Enter your email" />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+
+            <!-- Phone number entry is here -->
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                type="text"
+                id="phoneNumber"
+                placeholder="Enter your number"
+              />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+
+            <!-- Password entry is here -->
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                type="password"
+                id="fPassword"
+                placeholder="Enter your password"
+              />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+
+            <!-- Confirm password is here -->
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input
+                type="password"
+                id="sPassword"
+                placeholder="Confirm your password"
+              />
+              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <small>Error message</small>
+            </div>
+          </div>
+
+          <!-- Gender selector is here. -->
+          <div class="gender-details">
+            <!-- The below are the radio buttons. -->
+            <input type="radio" name="gender" id="dot-1" />
+            <input type="radio" name="gender" id="dot-2" />
+            <input type="radio" name="gender" id="dot-3" />
+            <span class="gender-title">Gender</span>
+
+            <!-- The below are the labels for the radio button -->
+            <div class="category">
+              <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Button for submission is here. -->
+          <div class="button">
+            <input type="submit" value="Register" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="/js/user/sign-up-script.js"></script>
+
+  </body>
+</html>

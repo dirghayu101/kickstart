@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../styles/adminStyles/general.css">
+    <link rel="stylesheet" href="../styles/adminStyles/aside-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/main-section-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/right-style.css">
+    <link rel="stylesheet" href="../styles/adminStyles/media-queries.css">
+    <link rel="stylesheet" href="../styles/userStyles/price-catalogue.css">
+    <link rel="stylesheet" href="../styles/userStyles/cart-styles.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- The first column of the grid, aside section starts here. -->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <!-- <img src="./assets/kickstart-logo.png" alt="" srcset=""> -->
+                    <h2><span class="danger">K</span>ick<span class="danger">S</span>tart</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- This will have all the options in the admin dashboard. -->
+                <a onclick="getPage('dashboard')" class="dashboard">
+                    <span class="material-icons-sharp">
+                        grid_view
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a onclick="getPage('spaces')" class="users spaces">
+                    <span class="material-icons-sharp">
+                        workspaces
+                    </span>
+                    <h3>Spaces</h3>
+                </a>
+                <a onclick="getPage('orders')" class="orders">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Orders</h3>
+                </a>
+                <a onclick="getPage('feedback')" class="reports feedback">
+                    <span class="material-icons-sharp">
+                        auto_awesome
+                    </span>
+                    <h3>Feedback</h3>
+                </a>
+                <a onclick="getPage('support')" class="messages support">
+                    <span class="material-icons-sharp">
+                        handshake
+                    </span>
+                    <h3>Support</h3>
+                </a>
+                <a onclick="getPage('reschedule')" class="settings reschedule">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Re-schedule</h3>
+                </a>
+                <a href="/user/login">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- Aside section ends here. -->
+        <div></div>
+        <!-- Main section starts here. -->
+        <main>
+            <h1 id="bookHeading">Book Your Space</h1>
+            <div class="outer-box" id="myCatalogue">
+            </div>
+        </main>
+        <!-- Main Section ends here. -->
+        <div></div>
+        <div class="outer-right">
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">
+                            menu
+                        </span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>
+                                </b></p>
+                            <small class="text-muted">User</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="/assets/user-panel/profilePicture.png" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-btn">
+                    <button>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This script is temporary as this page is quite messy already.-->
+    <script src="/js/user/user-catalogue.js"></script>
+
+    <script>
+        sideMenu = document.querySelector("aside");
+        menuBtn = document.querySelector("#menu-btn");
+        closeBtn = document.querySelector("#close-btn");
+        themeToggler = document.querySelector('.theme-toggler');
+
+        // Show sidebar
+        menuBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'block';
+        })
+
+        // Close sidebar
+        closeBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'none';
+        })
+
+        // Change theme
+        themeToggler.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme-variables');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+        })
+
+        getPage = async (params) => {
+            let page = await fetch(`/user/${params}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `${localStorage.getItem('userToken')} ${localStorage.getItem('mail')}`
+                }
+            }).then((res) => res.text())
+
+            document.querySelector('html').innerHTML = page;
+            let scriptTags = document.querySelectorAll('script')
+            scriptTags.forEach((tag) => {
+                let scriptTag = document.createElement('script')
+                scriptTag.innerHTML = tag.innerHTML
+                document.body.appendChild(scriptTag)
+            })
+        }
+
+        allBtn = document.querySelectorAll(".addBtn")
+        allRemoveBtn = document.querySelectorAll(".removeBtn")
+        allBtn.forEach((btn) => btn.addEventListener('click', () => {
+            btn.innerHTML = "Added"
+            btn.className = "removeBtn remove-book-btn"
+            btn.addEventListener('click', () => {
+                btn.innerHTML = "Add to cart"
+                btn.className = "book-btn addBtn removeBtn"
+            })
+        }))
+
+        allRemoveBtn.forEach((btn) => btn.addEventListener('mouseover', () => {
+            if (btn.classList.contains('remove-book-btn')) {
+                btn.innerHTML = "Remove"
+            }
+        }))
+
+        allRemoveBtn.forEach((btn) =>
+            btn.addEventListener('mouseout', () => {
+                if (btn.classList.contains('remove-book-btn')) {
+                    btn.innerHTML = "Added"
+                }
+            }))
+
+
+        
+
+
+
+        /*
+        let putCartItems = (cartItems) => {cartItems.forEach((item) => {
+  let thisItem = spaceDataObjects[item.itemID];
+  let { imgSrc, objName, price } = thisItem;
+  let value = item.value
+  let div = document.createElement('div')
+  let defaultDate = getDate()
+  div.innerHTML  = `${`<div class="item-row">
+  <div class="item-picture">
+      <img src="`}`+imgSrc+`${`" srcset="">
+  </div>
+  <div class="space-type">
+      <p>`}`+objName+`${`</p>
+  </div>
+  <div class="number-item">
+      <span class="material-symbols-rounded decrement">remove</span>
+      <span class="quantity item-value">`}`+value+`${`</span>
+      <span class="material-symbols-rounded increment">add</span>
+  </div>
+  <div class="date">
+      <input type="date" value=${defaultDate}>
+  </div>
+  <div class="price">
+      <p>₹`}`+price+`${`</p>
+  </div>
+</div>`}`;
+
+  document.querySelector("#insertRows").appendChild(div)
+});}
+        */
+
+
+    </script>
+
+</body>
+
+</html>

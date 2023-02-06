@@ -1,0 +1,116 @@
+.testimonial-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.testimonial-container::before {
+  content: "";
+  background-color: rgba(0, 20, 46, 0.8);
+}
+
+.testimonial-tittle {
+  margin-bottom: 20px;
+  position: relative;
+}
+.testimonial-tittle:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  bottom: -10px;
+  left: 0px;
+  background-color: #f62621;
+}
+
+.testimonial {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  padding: 50px 0;
+  overflow: hidden;
+}
+.testimonial .images {
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.testimonial-tittle h3 {
+  color: #ffffff;
+}
+
+.slide .testi-author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 29px;
+}
+
+.swiper-pagination-bullet {
+  background-color: white; /*navigation bullet bgcolor*/
+}
+.swiper-pagination-bullet-active {
+  background-color: #f44040; /*navigation bullet color*/
+}
+@media screen and (max-width: 768px) {
+  .slide p {
+    padding: 0 20px;
+  }
+  .nav-btn {
+    display: none;
+  }
+}
+
+.testi-author-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.testi-author-thumb {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.testi-author-thumb img {
+  border-radius: 100%;
+  border: 5px solid #4064b4;
+  width: 630px;
+}
+.testi-content p {
+  color: #e7e7e7;
+  font-size: 16px;
+  padding: 0px 0px 0px 30px;
+  font-weight: 400;
+
+  width: 355px;
+  justify-content: center;
+}
+
+.testi-author-info {
+  margin: 20px 0px 20px 30px;
+  width: 355px;
+  justify-content: right;
+}
+
+.testi-author-info .testi-author-title {
+  color: #ffffff;
+  width: 10px;
+}
+
+.testi-author-info .testi-author-subtitle {
+  color: #d0d4e2;
+  display: flex;
+}
+.testi-author-title {
+  font-size: 14px;
+  justify-content: flex-start;
+  text-align: left;
+}
+.testi-author-subtitle {
+  font-size: 12px;
+  justify-content: center;
+}
