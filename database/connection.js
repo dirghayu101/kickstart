@@ -3,8 +3,8 @@ const {Client} = require('pg')
 const client = new Client({
     host: 'localhost',
     user: 'postgres',
-    port: 5432,
-    password: `618903`,
+    port: process.env.PSQL_PORT,
+    password: process.env.PSQL_PASSWORD,
     database: 'KickStart-WorkHub'
   }); 
 
